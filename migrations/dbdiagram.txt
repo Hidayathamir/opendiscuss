@@ -1,0 +1,115 @@
+// https://dbdiagram.io/d/opendiscuss-erd-64e854c002bd1c4a5e6392d5
+// https://dbdocs.io/hidayathamir/opendiscuss
+
+Table vote_options {
+  id int [PK, increment]
+  name varchar [not null, unique]
+}
+
+Table users {
+  id int [PK, increment]
+  username varchar [not null, unique]
+}
+
+Table user_question_votes {
+  id int [PK, increment]
+  user_id int [not null]
+  question_id int [not null]
+  vote_option_id int [not null]
+
+  Indexes {
+    (user_id, question_id) [unique]
+  }
+}
+Ref: users.id < user_question_votes.user_id [delete: cascade]
+Ref: questions.id < user_question_votes.question_id [delete: cascade]
+Ref: vote_options.id < user_question_votes.vote_option_id [delete: cascade]
+
+Table questions {
+  id int [PK, increment]
+  user_id int [not null]
+  body varchar [not null]
+}
+Ref: users.id < questions.user_id [delete: cascade]
+
+Table question_statistics {
+  id int [PK, increment]
+  question_id int [not null]
+  thumbs_up int [not null]
+  thumbs_down int [not null]
+}
+Ref: questions.id - question_statistics.question_id [delete: cascade]
+
+Table user_answer_votes {
+  id int [PK, increment]
+  user_id int [not null]
+  answer_id int [not null]
+  vote_option_id int [not null]
+
+  Indexes {
+    (user_id, answer_id) [unique]
+  }
+}
+Ref: users.id < user_answer_votes.user_id [delete: cascade]
+Ref: answers.id < user_answer_votes.answer_id [delete: cascade]
+Ref: vote_options.id < user_answer_votes.vote_option_id [delete: cascade]
+
+Table answers {
+  id int [PK, increment]
+  questions_id int [not null]
+  user_id int [not null]
+  body varchar [not null]
+}
+Ref: questions.id < answers.questions_id [delete: cascade]
+Ref: users.id < answers.user_id [delete: cascade]
+
+Table answer_statistics {
+  id int [PK, increment]
+  answer_id int [not null]
+  thumbs_up int [not null]
+  thumbs_down int [not null]
+}
+Ref: answers.id - answer_statistics.answer_id [delete: cascade]
+
+Table user_comment_votes {
+  id int [PK, increment]
+  user_id int [not null]
+  comment_id int [not null]
+  vote_option_id int [not null]
+
+  Indexes {
+    (user_id, comment_id) [unique]
+  }
+}
+Ref: users.id < user_comment_votes.user_id [delete: cascade]
+Ref: comments.id < user_comment_votes.comment_id [delete: cascade]
+Ref: vote_options.id < user_comment_votes.vote_option_id [delete: cascade]
+
+Table comments {
+  id int [PK, increment]
+  answer_id int [not null]
+  user_id int [not null]
+  body varchar [not null]
+}
+Ref: answers.id < comments.answer_id [delete: cascade]
+Ref: users.id < comments.user_id [delete: cascade]
+
+Table comment_statistics {
+  id int [PK, increment]
+  comment_id int [not null]
+  thumbs_up int [not null]
+  thumbs_down int [not null]
+}
+Ref: comments.id - comment_statistics.comment_id [delete: cascade]
+
+Table parent_child_comments {
+  id int [PK, increment]
+  parent_comment_id int [not null]
+  child_comment_id int [not null]
+
+  Indexes {
+    (parent_comment_id, child_comment_id) [unique]
+  }
+}
+Ref: comments.id < parent_child_comments.parent_comment_id [delete: cascade]
+Ref: comments.id < parent_child_comments.child_comment_id [delete: cascade]
