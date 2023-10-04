@@ -2,9 +2,13 @@ package utils
 
 import "github.com/gin-gonic/gin"
 
-func WriteResponse(ctx *gin.Context, code int, data interface{}, _error interface{}) {
-	ctx.JSON(code, gin.H{
+func WriteResponse(ctx *gin.Context, code int, data interface{}, _error error) {
+	body := gin.H{
 		"data":  data,
-		"error": _error,
-	})
+		"error": nil,
+	}
+	if _error != nil {
+		body["error"] = _error.Error()
+	}
+	ctx.JSON(code, body)
 }

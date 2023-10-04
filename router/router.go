@@ -1,6 +1,7 @@
 package router
 
 import (
+	"errors"
 	"net/http"
 
 	questionrouter "github.com/Hidayathamir/opendiscuss/api/v1/question/router"
@@ -19,6 +20,6 @@ func AddRouter(db *gorm.DB, r *gin.Engine) {
 	}
 
 	r.NoRoute(func(ctx *gin.Context) {
-		utils.WriteResponse(ctx, http.StatusNotFound, nil, "page not found")
+		utils.WriteResponse(ctx, http.StatusNotFound, nil, errors.New("page not found"))
 	})
 }
