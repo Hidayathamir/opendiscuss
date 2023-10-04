@@ -5,6 +5,7 @@ import (
 
 	"github.com/Hidayathamir/opendiscuss/constant"
 	"github.com/Hidayathamir/opendiscuss/router"
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -24,7 +25,8 @@ func main() {
 		panic(err)
 	}
 
-	r := router.GetRouter(db)
+	r := gin.Default()
+	router.AddRouter(db, r)
 	if err := r.Run(); err != nil {
 		panic(err)
 	}
