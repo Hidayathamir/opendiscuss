@@ -5,6 +5,7 @@ import (
 	"github.com/Hidayathamir/opendiscuss/api/v1/question/repository"
 	"github.com/Hidayathamir/opendiscuss/api/v1/question/service"
 	"github.com/Hidayathamir/opendiscuss/middleware"
+	"github.com/Hidayathamir/opendiscuss/utils"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
@@ -18,7 +19,8 @@ func AddQuestionRouter(db *gorm.DB, r *gin.RouterGroup) {
 
 func getQuestionController(db *gorm.DB) controller.IQuestionController {
 	questionRepo := repository.NewQuestionRepository(db)
-	questionService := service.NewQuestionService(questionRepo)
+	trManager := utils.NewTransactionManager(db)
+	questionService := service.NewQuestionService(questionRepo, trManager)
 	questionController := controller.NewQuestionController(questionService)
 	return questionController
 }

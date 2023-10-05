@@ -5,6 +5,7 @@ import (
 
 	"github.com/Hidayathamir/opendiscuss/api/v1/question/dto"
 	"github.com/Hidayathamir/opendiscuss/model"
+	"github.com/Hidayathamir/opendiscuss/utils"
 	"gorm.io/gorm"
 )
 
@@ -20,4 +21,12 @@ type QuestionRepository struct {
 
 func NewQuestionRepository(db *gorm.DB) IQuestionRepository {
 	return &QuestionRepository{db: db}
+}
+
+func (qr *QuestionRepository) getTrOrDB(ctx context.Context) *gorm.DB {
+	isHasTransaction := ctx.Value(utils.CtxKey) != nil
+	if isHasTransaction {
+		return ctx.Value(utils.CtxKey).(*gorm.DB)
+	}
+	return qr.db
 }

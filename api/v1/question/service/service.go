@@ -5,6 +5,7 @@ import (
 
 	"github.com/Hidayathamir/opendiscuss/api/v1/question/dto"
 	"github.com/Hidayathamir/opendiscuss/api/v1/question/repository"
+	"github.com/Hidayathamir/opendiscuss/utils"
 )
 
 type IQuestionService interface {
@@ -13,9 +14,10 @@ type IQuestionService interface {
 }
 
 type QuestionService struct {
-	repo repository.IQuestionRepository
+	repo      repository.IQuestionRepository
+	trManager utils.ITransactionManager
 }
 
-func NewQuestionService(repo repository.IQuestionRepository) IQuestionService {
-	return &QuestionService{repo: repo}
+func NewQuestionService(repo repository.IQuestionRepository, trManager utils.ITransactionManager) IQuestionService {
+	return &QuestionService{repo: repo, trManager: trManager}
 }

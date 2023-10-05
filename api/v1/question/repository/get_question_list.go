@@ -39,7 +39,7 @@ func (qr *QuestionRepository) GetQuestionList(ctx context.Context) ([]dto.Questi
 		model.QUESTION_STATISTIC_QUESTION_ID,
 	)
 
-	q := qr.db.Select(querySelect).
+	q := qr.getTrOrDB(ctx).Select(querySelect).
 		Table(model.QUESTION_TABLE_NAME).
 		Joins(queryJoinUser).
 		Joins(queryJoinQuestionStatistic).
