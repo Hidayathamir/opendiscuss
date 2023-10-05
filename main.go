@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/Hidayathamir/opendiscuss/environtment"
 	"github.com/Hidayathamir/opendiscuss/router"
 	"github.com/Hidayathamir/opendiscuss/utils"
 	"github.com/gin-gonic/gin"
@@ -9,6 +10,10 @@ import (
 
 func main() {
 	if err := godotenv.Load(".env"); err != nil {
+		panic(err)
+	}
+
+	if err := environtment.InitEnv(); err != nil {
 		panic(err)
 	}
 
