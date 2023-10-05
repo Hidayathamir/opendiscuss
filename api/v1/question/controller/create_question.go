@@ -19,6 +19,8 @@ func (qc *QuestionController) CreateQuestion(ctx *gin.Context) {
 		return
 	}
 
+	req.UserID = ctx.GetInt("user_id")
+
 	questionID, err := qc.service.CreateQuestion(ctx, req)
 	if err != nil {
 		err = errors.Wrap(err, "error create question")

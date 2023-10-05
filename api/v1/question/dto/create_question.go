@@ -7,7 +7,7 @@ import (
 )
 
 type ReqCreateQuestion struct {
-	UserID   int    `json:"user_id"`
+	UserID   int    `json:"-"`
 	Question string `json:"question"`
 }
 
