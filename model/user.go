@@ -16,9 +16,9 @@ func (User) Tablename() string {
 
 const (
 	USER_TABLE_NAME = "users"
-	USER_ID         = "id"
-	USER_USERNAME   = "username"
-	USER_PASSWORD   = "password"
-	USER_CREATED_AT = "created_at"
-	USER_UPDATED_AT = "updated_at"
+	USER_ID         = "users.id"
+	USER_USERNAME   = "users.username"
+	USER_PASSWORD   = "users.password"
+	USER_CREATED_AT = "users.created_at"
+	USER_UPDATED_AT = "users.updated_at"
 )
