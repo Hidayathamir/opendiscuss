@@ -83,7 +83,7 @@ func TestQuestionService_CreateQuestion(t *testing.T) {
 				Return(want, nil)
 
 			return testStruct{
-				name:    "if create question error, should return error",
+				name:    "if create question success, should return success",
 				fields:  fields{repo: repo},
 				args:    args{req: req},
 				want:    want,
