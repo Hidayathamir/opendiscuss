@@ -11,6 +11,7 @@ Table vote_options {
 Table users {
   id int [PK, increment]
   username varchar [not null, unique]
+  password varchar [not null]
   created_at datetime [not null, default: `now()`]
   updated_at datetime [not null, default: `now()`]
 }
