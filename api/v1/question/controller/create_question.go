@@ -7,18 +7,21 @@ import (
 	"github.com/Hidayathamir/opendiscuss/constant"
 	"github.com/Hidayathamir/opendiscuss/utils"
 	"github.com/gin-gonic/gin"
+	"github.com/pkg/errors"
 )
 
 func (qc *QuestionController) CreateQuestion(ctx *gin.Context) {
 	req := dto.ReqCreateQuestion{}
 
 	if err := ctx.ShouldBindJSON(&req); err != nil {
-		utils.WriteResponse(ctx, http.StatusBadRequest, nil, constant.INVALID_REQUEST_BODY)
+		err = errors.Wrap(err, constant.ERR_INVALID_REQUEST_BODY)
+		utils.WriteResponse(ctx, http.StatusBadRequest, nil, err)
 		return
 	}
 
 	questionID, err := qc.service.CreateQuestion(ctx, req)
 	if err != nil {
+		err = errors.Wrap(err, "error create question")
 		utils.WriteResponse(ctx, http.StatusBadRequest, nil, err)
 		return
 	}

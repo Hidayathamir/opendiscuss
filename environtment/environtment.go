@@ -1,9 +1,10 @@
 package environtment
 
 import (
-	"errors"
 	"os"
 	"strconv"
+
+	"github.com/pkg/errors"
 )
 
 const (
@@ -40,7 +41,7 @@ func InitEnv() error {
 	var err error
 	JWT_EXPIRE_HOUR, err = strconv.Atoi(jwtExpireHourEnv)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "error convert string to int")
 	}
 
 	return nil

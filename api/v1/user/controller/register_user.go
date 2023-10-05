@@ -7,18 +7,21 @@ import (
 	"github.com/Hidayathamir/opendiscuss/constant"
 	"github.com/Hidayathamir/opendiscuss/utils"
 	"github.com/gin-gonic/gin"
+	"github.com/pkg/errors"
 )
 
 func (uc *UserController) RegisterUser(ctx *gin.Context) {
 	req := dto.ReqRegisterUser{}
 
 	if err := ctx.ShouldBindJSON(&req); err != nil {
-		utils.WriteResponse(ctx, http.StatusBadRequest, nil, constant.INVALID_REQUEST_BODY)
+		err = errors.Wrap(err, constant.ERR_INVALID_REQUEST_BODY)
+		utils.WriteResponse(ctx, http.StatusBadRequest, nil, err)
 		return
 	}
 
 	userID, err := uc.service.RegisterUser(ctx, req)
 	if err != nil {
+		err = errors.Wrap(err, "error register user")
 		utils.WriteResponse(ctx, http.StatusBadRequest, nil, err)
 		return
 	}

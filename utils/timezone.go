@@ -1,10 +1,10 @@
 package utils
 
 import (
-	"errors"
 	"time"
 
 	"github.com/Hidayathamir/opendiscuss/environtment"
+	"github.com/pkg/errors"
 )
 
 func SetTimeZone() error {
@@ -14,8 +14,7 @@ func SetTimeZone() error {
 	if environtment.LOCATION != "" {
 		location, err = time.LoadLocation(environtment.LOCATION)
 		if err != nil {
-			errorMessage := "error loading timezone:" + err.Error()
-			return errors.New(errorMessage)
+			return errors.Wrap(err, "error load timezone")
 		}
 	}
 
