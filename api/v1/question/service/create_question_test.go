@@ -45,7 +45,7 @@ func TestQuestionService_CreateQuestion(t *testing.T) {
 
 			repo.
 				On("CreateQuestion", mock.Anything, req.ToModelQuestion()).
-				Return(0, errors.New("dummy error questions_ibfk_1"))
+				Return(0, errors.New("dummy error REFERENCES `users` (`id`)"))
 
 			return testStruct{
 				name:    "if create question error user not found, should return error",
