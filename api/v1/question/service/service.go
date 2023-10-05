@@ -9,6 +9,7 @@ import (
 
 type IQuestionService interface {
 	CreateQuestion(ctx context.Context, req dto.ReqCreateQuestion) (int, error)
+	GetQuestionList(ctx context.Context) ([]dto.QuestionHighlight, error)
 }
 
 type QuestionService struct {

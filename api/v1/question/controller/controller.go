@@ -7,6 +7,7 @@ import (
 
 type IQuestionController interface {
 	CreateQuestion(ctx *gin.Context)
+	GetQuestionList(ctx *gin.Context)
 }
 
 type QuestionController struct {

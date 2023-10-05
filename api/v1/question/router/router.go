@@ -13,6 +13,7 @@ func AddQuestionRouter(db *gorm.DB, r *gin.RouterGroup) {
 	qc := getQuestionController(db)
 
 	r.POST("/questions", middleware.Authenticate, qc.CreateQuestion)
+	r.GET("/questions", qc.GetQuestionList)
 }
 
 func getQuestionController(db *gorm.DB) controller.IQuestionController {
