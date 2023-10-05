@@ -48,5 +48,7 @@ func (us *UserService) generateUserJWTToken(ctx context.Context, userID int) (st
 		return "", errors.Wrap(err, "error sign jwt token")
 	}
 
+	tokenString = "Bearer " + tokenString
+
 	return tokenString, nil
 }
