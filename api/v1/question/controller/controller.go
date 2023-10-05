@@ -13,6 +13,6 @@ type QuestionController struct {
 	service service.IQuestionService
 }
 
-func NewCommentController(service service.IQuestionService) IQuestionController {
+func NewQuestionController(service service.IQuestionService) IQuestionController {
 	return &QuestionController{service: service}
 }

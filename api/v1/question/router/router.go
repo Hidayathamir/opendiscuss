@@ -17,6 +17,6 @@ func AddQuestionRouter(db *gorm.DB, r *gin.RouterGroup) {
 func getQuestionController(db *gorm.DB) controller.IQuestionController {
 	questionRepo := repository.NewQuestionRepository(db)
 	questionService := service.NewQuestionService(questionRepo)
-	questionController := controller.NewCommentController(questionService)
+	questionController := controller.NewQuestionController(questionService)
 	return questionController
 }
