@@ -77,6 +77,59 @@ func (_c *IQuestionRepository_CreateQuestion_Call) RunAndReturn(run func(context
 	return _c
 }
 
+// CreateQuestionStatistic provides a mock function with given fields: ctx, question
+func (_m *IQuestionRepository) CreateQuestionStatistic(ctx context.Context, question model.QuestionStatistic) (int, error) {
+	ret := _m.Called(ctx, question)
+
+	var r0 int
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, model.QuestionStatistic) (int, error)); ok {
+		return rf(ctx, question)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, model.QuestionStatistic) int); ok {
+		r0 = rf(ctx, question)
+	} else {
+		r0 = ret.Get(0).(int)
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, model.QuestionStatistic) error); ok {
+		r1 = rf(ctx, question)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// IQuestionRepository_CreateQuestionStatistic_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateQuestionStatistic'
+type IQuestionRepository_CreateQuestionStatistic_Call struct {
+	*mock.Call
+}
+
+// CreateQuestionStatistic is a helper method to define mock.On call
+//   - ctx context.Context
+//   - question model.QuestionStatistic
+func (_e *IQuestionRepository_Expecter) CreateQuestionStatistic(ctx interface{}, question interface{}) *IQuestionRepository_CreateQuestionStatistic_Call {
+	return &IQuestionRepository_CreateQuestionStatistic_Call{Call: _e.mock.On("CreateQuestionStatistic", ctx, question)}
+}
+
+func (_c *IQuestionRepository_CreateQuestionStatistic_Call) Run(run func(ctx context.Context, question model.QuestionStatistic)) *IQuestionRepository_CreateQuestionStatistic_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(model.QuestionStatistic))
+	})
+	return _c
+}
+
+func (_c *IQuestionRepository_CreateQuestionStatistic_Call) Return(_a0 int, _a1 error) *IQuestionRepository_CreateQuestionStatistic_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *IQuestionRepository_CreateQuestionStatistic_Call) RunAndReturn(run func(context.Context, model.QuestionStatistic) (int, error)) *IQuestionRepository_CreateQuestionStatistic_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetQuestionList provides a mock function with given fields: ctx
 func (_m *IQuestionRepository) GetQuestionList(ctx context.Context) ([]dto.QuestionHighlight, error) {
 	ret := _m.Called(ctx)

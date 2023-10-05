@@ -18,6 +18,12 @@ func (r ReqCreateQuestion) ToModelQuestion() model.Question {
 	}
 }
 
+func (r ReqCreateQuestion) ToModelQuestionStatistic(questionID int) model.QuestionStatistic {
+	return model.QuestionStatistic{
+		QuestionID: questionID,
+	}
+}
+
 func (r ReqCreateQuestion) Validate() error {
 	if r.UserID == 0 {
 		return errors.New("user_id can not be empty")
