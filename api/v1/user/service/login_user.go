@@ -43,7 +43,7 @@ func (us *UserService) generateUserJWTToken(ctx context.Context, userID int) (st
 		"exp":     time.Now().Add(expireIn).Unix(),
 	})
 
-	tokenString, err := token.SignedString(environtment.JWT_SIGN_KEY)
+	tokenString, err := token.SignedString([]byte(environtment.JWT_SIGN_KEY))
 	if err != nil {
 		return "", errors.Wrap(err, "error sign jwt token")
 	}
