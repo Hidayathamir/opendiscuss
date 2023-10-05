@@ -3,6 +3,7 @@ package environtment
 import (
 	"os"
 	"strconv"
+	"strings"
 
 	"github.com/pkg/errors"
 )
@@ -25,6 +26,9 @@ func InitEnv() error {
 	DB_CONNECTION = os.Getenv(_ENV_KEY_DB_CONNECTION)
 	if DB_CONNECTION == "" {
 		return errors.New("DB_CONNECTION not found in os environtment")
+	}
+	if !strings.Contains(DB_CONNECTION, "parseTime=true") {
+		return errors.New("DB_CONNECTION should have parseTime=true")
 	}
 
 	LOCATION = os.Getenv(_ENV_KEY_LOCATION)
