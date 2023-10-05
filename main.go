@@ -18,10 +18,6 @@ func main() {
 		panic(errors.Wrap(err, "error init environtment"))
 	}
 
-	if err := utils.SetTimeZone(); err != nil {
-		panic(errors.Wrap(err, "error set time zone"))
-	}
-
 	db, err := utils.GetDBConnection()
 	if err != nil {
 		panic(errors.Wrap(err, "error get db connection"))

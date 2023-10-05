@@ -8,7 +8,6 @@ services:
       MYSQL_DATABASE: opendiscuss
       MYSQL_USER: user
       MYSQL_PASSWORD: password
-      TZ: "Asia/Jakarta"
     ports:
       - "3306:3306"
     volumes:

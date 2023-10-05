@@ -10,14 +10,12 @@ import (
 
 const (
 	_ENV_KEY_DB_CONNECTION   = "DB_CONNECTION"
-	_ENV_KEY_LOCATION        = "LOCATION"
 	_ENV_KEY_JWT_SIGN_KEY    = "JWT_SIGN_KEY"
 	_ENV_KEY_JWT_EXPIRE_HOUR = "JWT_EXPIRE_HOUR"
 )
 
 var (
 	DB_CONNECTION   = "configure by env"
-	LOCATION        = "configure by env"
 	JWT_SIGN_KEY    = "configure by env"
 	JWT_EXPIRE_HOUR = 0
 )
@@ -30,8 +28,6 @@ func InitEnv() error {
 	if !strings.Contains(DB_CONNECTION, "parseTime=true") {
 		return errors.New("DB_CONNECTION should have parseTime=true")
 	}
-
-	LOCATION = os.Getenv(_ENV_KEY_LOCATION)
 
 	JWT_SIGN_KEY = os.Getenv(_ENV_KEY_JWT_SIGN_KEY)
 	if JWT_SIGN_KEY == "" {
