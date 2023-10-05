@@ -18,9 +18,9 @@ func (Question) TableName() string {
 
 const (
 	QUESTION_TABLE_NAME = "questions"
-	QUESTION_ID         = "id"
-	QUESTION_USER_ID    = "user_id"
-	QUESTION_BODY       = "body"
-	QUESTION_CREATED_AT = "created_at"
-	QUESTION_UPDATED_AT = "updated_at"
+	QUESTION_ID         = "questions.id"
+	QUESTION_USER_ID    = "questions.user_id"
+	QUESTION_BODY       = "questions.body"
+	QUESTION_CREATED_AT = "questions.created_at"
+	QUESTION_UPDATED_AT = "questions.updated_at"
 )
