@@ -1,0 +1,32 @@
+package repository
+
+import (
+	"context"
+
+	"github.com/Hidayathamir/opendiscuss/api/v1/question/dto"
+	"github.com/Hidayathamir/opendiscuss/model"
+	"github.com/Hidayathamir/opendiscuss/utils"
+	"gorm.io/gorm"
+)
+
+type IQuestionRepository interface {
+	CreateQuestion(ctx context.Context, question model.Question) (int, error)
+	CreateQuestionStatistic(ctx context.Context, question model.QuestionStatistic) (int, error)
+	GetQuestionList(ctx context.Context) ([]dto.QuestionHighlight, error)
+}
+
+type QuestionRepository struct {
+	db *gorm.DB
+}
+
+func NewQuestionRepository(db *gorm.DB) IQuestionRepository {
+	return &QuestionRepository{db: db}
+}
+
+func (qr *QuestionRepository) getTrOrDB(ctx context.Context) *gorm.DB {
+	isHasTransaction := ctx.Value(utils.CtxKey) != nil
+	if isHasTransaction {
+		return ctx.Value(utils.CtxKey).(*gorm.DB)
+	}
+	return qr.db
+}

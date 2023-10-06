@@ -12,3 +12,4 @@ services:
       - "3306:3306"
     volumes:
       - ./migrations/init-table.sql:/docker-entrypoint-initdb.d/1000.sql
+      - ./migrations/init-data.sql:/docker-entrypoint-initdb.d/1001.sql
