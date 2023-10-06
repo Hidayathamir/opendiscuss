@@ -11,6 +11,8 @@ import (
 type IQuestionService interface {
 	CreateQuestion(ctx context.Context, req dto.ReqCreateQuestion) (int, error)
 	GetQuestionList(ctx context.Context) ([]dto.QuestionHighlight, error)
+	VoteThumbsUp(ctx context.Context, req dto.ReqVoteThumbs) (int, error)
+	VoteThumbsDown(ctx context.Context, req dto.ReqVoteThumbs) (int, error)
 }
 
 type QuestionService struct {
