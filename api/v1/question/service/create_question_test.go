@@ -10,6 +10,7 @@ import (
 	"github.com/Hidayathamir/opendiscuss/api/v1/question/repository"
 	"github.com/Hidayathamir/opendiscuss/constant"
 	"github.com/Hidayathamir/opendiscuss/mocks"
+	"github.com/Hidayathamir/opendiscuss/model"
 	"github.com/Hidayathamir/opendiscuss/utils"
 	"github.com/stretchr/testify/mock"
 	"gorm.io/driver/sqlite"
@@ -115,8 +116,11 @@ func TestQuestionService_CreateQuestion(t *testing.T) {
 				On("CreateQuestion", mock.Anything, req.ToModelQuestion()).
 				Return(questionID, nil)
 
+			questionStatistic := model.QuestionStatistic{
+				QuestionID: questionID,
+			}
 			repo.
-				On("CreateQuestionStatistic", mock.Anything, req.ToModelQuestionStatistic(questionID)).
+				On("CreateQuestionStatistic", mock.Anything, questionStatistic).
 				Return(0, errors.New("dummy error"))
 
 			return testStruct{
@@ -146,8 +150,11 @@ func TestQuestionService_CreateQuestion(t *testing.T) {
 				On("CreateQuestion", mock.Anything, req.ToModelQuestion()).
 				Return(questionIDWanted, nil)
 
+			questionStatistic := model.QuestionStatistic{
+				QuestionID: questionIDWanted,
+			}
 			repo.
-				On("CreateQuestionStatistic", mock.Anything, req.ToModelQuestionStatistic(questionIDWanted)).
+				On("CreateQuestionStatistic", mock.Anything, questionStatistic).
 				Return(999, nil)
 
 			return testStruct{

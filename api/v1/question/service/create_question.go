@@ -6,6 +6,7 @@ import (
 
 	"github.com/Hidayathamir/opendiscuss/api/v1/question/dto"
 	"github.com/Hidayathamir/opendiscuss/constant"
+	"github.com/Hidayathamir/opendiscuss/model"
 	"github.com/pkg/errors"
 )
 
@@ -27,7 +28,10 @@ func (qs *QuestionService) CreateQuestion(ctx context.Context, req dto.ReqCreate
 			return err
 		}
 
-		_, err = qs.repo.CreateQuestionStatistic(ctx, req.ToModelQuestionStatistic(questionID))
+		questionStatistic := model.QuestionStatistic{
+			QuestionID: questionID,
+		}
+		_, err = qs.repo.CreateQuestionStatistic(ctx, questionStatistic)
 		if err != nil {
 			return errors.Wrap(err, "error create question statistic")
 		}
