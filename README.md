@@ -21,3 +21,7 @@ to see mysql credential you can check file `docker-compose.yml`
 ```
 go run .
 ```
+
+## api documentation
+
+for api documentation, you can import file `postman/opendiscuss.postman_collection.json` into your postman.
