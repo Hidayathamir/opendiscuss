@@ -6,8 +6,17 @@
 
 ## quick start
 
-1. rename `.env-example` to `.env`
-2. run
+1. run mysql db using docker compose
+
+```
+sudo docker compose up
+```
+
+to see mysql credential you can check file `docker-compose.yml`
+
+2. rename `.env-example` to `.env`
+
+3. run golang
 
 ```
 go run .
