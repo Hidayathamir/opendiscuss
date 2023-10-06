@@ -43,7 +43,7 @@ Ref: users.id < questions.user_id [delete: cascade]
 
 Table question_statistics {
   id int [PK, increment]
-  question_id int [not null]
+  question_id int [not null, unique]
   thumbs_up int [not null]
   thumbs_down int [not null]
   created_at datetime [not null, default: `now()`]
@@ -80,7 +80,7 @@ Ref: users.id < answers.user_id [delete: cascade]
 
 Table answer_statistics {
   id int [PK, increment]
-  answer_id int [not null]
+  answer_id int [not null, unique]
   thumbs_up int [not null]
   thumbs_down int [not null]
   created_at datetime [not null, default: `now()`]
@@ -117,7 +117,7 @@ Ref: users.id < comments.user_id [delete: cascade]
 
 Table comment_statistics {
   id int [PK, increment]
-  comment_id int [not null]
+  comment_id int [not null, unique]
   thumbs_up int [not null]
   thumbs_down int [not null]
   created_at datetime [not null, default: `now()`]

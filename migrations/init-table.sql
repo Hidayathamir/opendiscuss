@@ -32,7 +32,7 @@ CREATE TABLE `questions` (
 
 CREATE TABLE `question_statistics` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `question_id` int NOT NULL,
+  `question_id` int UNIQUE NOT NULL,
   `thumbs_up` int NOT NULL,
   `thumbs_down` int NOT NULL,
   `created_at` datetime NOT NULL DEFAULT (now()),
@@ -59,7 +59,7 @@ CREATE TABLE `answers` (
 
 CREATE TABLE `answer_statistics` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `answer_id` int NOT NULL,
+  `answer_id` int UNIQUE NOT NULL,
   `thumbs_up` int NOT NULL,
   `thumbs_down` int NOT NULL,
   `created_at` datetime NOT NULL DEFAULT (now()),
@@ -86,7 +86,7 @@ CREATE TABLE `comments` (
 
 CREATE TABLE `comment_statistics` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `comment_id` int NOT NULL,
+  `comment_id` int UNIQUE NOT NULL,
   `thumbs_up` int NOT NULL,
   `thumbs_down` int NOT NULL,
   `created_at` datetime NOT NULL DEFAULT (now()),
