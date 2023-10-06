@@ -1,7 +1,7 @@
 # opendiscuss
 
-## run mockery using docker
+## run generate mocks using mockery
 
 ```
-sudo docker run -v "$PWD":/src -w /src vektra/mockery:v2.33
+./bin/mockery --name IQuestionRepository
 ```
