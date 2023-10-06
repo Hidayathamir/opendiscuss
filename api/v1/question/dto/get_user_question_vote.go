@@ -3,8 +3,8 @@ package dto
 import "errors"
 
 type ReqGetUserQuestionVoteByUserIDAndQuestionID struct {
-	UserID     int `json:"-"`
-	QuestionID int `json:"-"`
+	UserID     int
+	QuestionID int
 }
 
 func (r ReqGetUserQuestionVoteByUserIDAndQuestionID) Validate() error {

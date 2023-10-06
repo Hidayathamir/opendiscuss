@@ -8,9 +8,9 @@ import (
 )
 
 type ReqCreateUserQuestionVote struct {
-	UserID       int                 `json:"-"`
-	QuestionID   int                 `json:"-"`
-	VoteOptionID constant.VoteOption `json:"-"`
+	UserID       int
+	QuestionID   int
+	VoteOptionID constant.VoteOption
 }
 
 func (r ReqCreateUserQuestionVote) Validate() error {

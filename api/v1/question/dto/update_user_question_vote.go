@@ -7,8 +7,8 @@ import (
 )
 
 type ReqUpdateUserQuestionVoteColumnVoteOptionIDByID struct {
-	ID           int                 `json:"-"`
-	VoteOptionID constant.VoteOption `json:"-"`
+	ID           int
+	VoteOptionID constant.VoteOption
 }
 
 func (r ReqUpdateUserQuestionVoteColumnVoteOptionIDByID) Validate() error {

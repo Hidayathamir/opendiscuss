@@ -5,8 +5,8 @@ import (
 )
 
 type ReqVoteThumbs struct {
-	UserID     int `json:"-"`
-	QuestionID int `json:"-"`
+	UserID     int
+	QuestionID int
 }
 
 func (r ReqVoteThumbs) Validate() error {
