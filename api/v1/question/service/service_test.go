@@ -10,7 +10,8 @@ import (
 
 func TestNewQuestionService(t *testing.T) {
 	type args struct {
-		repo repository.IQuestionRepository
+		repo      repository.IQuestionRepository
+		trManager utils.ITransactionManager
 	}
 	type testStruct struct {
 		name string
@@ -28,7 +29,7 @@ func TestNewQuestionService(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := NewQuestionService(tt.args.repo, &utils.TransactionManager{}); !reflect.DeepEqual(got, tt.want) {
+			if got := NewQuestionService(tt.args.repo, tt.args.trManager); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("NewQuestionService() = %v, want %v", got, tt.want)
 			}
 		})
