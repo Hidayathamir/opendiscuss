@@ -11,7 +11,7 @@ import (
 
 func (us *UserService) LoginUser(ctx context.Context, req dto.ReqLoginUser) (string, error) {
 	if err := req.Validate(); err != nil {
-		return "", errors.Wrap(err, constant.ERR_REQ_BODY_VALIDATE)
+		return "", errors.Wrap(err, constant.ERR_REQ_VALIDATE)
 	}
 
 	user, err := us.repo.GetUserByUsername(ctx, req.Username)

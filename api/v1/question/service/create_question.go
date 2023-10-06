@@ -12,7 +12,7 @@ import (
 
 func (qs *QuestionService) CreateQuestion(ctx context.Context, req dto.ReqCreateQuestion) (int, error) {
 	if err := req.Validate(); err != nil {
-		return 0, errors.Wrap(err, constant.ERR_REQ_BODY_VALIDATE)
+		return 0, errors.Wrap(err, constant.ERR_REQ_VALIDATE)
 	}
 
 	var questionID int
