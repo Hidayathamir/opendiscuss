@@ -42,3 +42,19 @@ def get_question_detail(questoin_id):
     url = f"http://localhost:8080/api/v1/questions/{questoin_id}"
 
     return requests.request("GET", url, headers={}, data={}).json()
+
+
+from enum import Enum
+
+
+class VoteOption(Enum):
+    ThumbsUp = "thumbsup"
+    ThumbsDown = "thumbsdown"
+
+
+def vote_question(jwt_token, question_id, voting: VoteOption):
+    url = f"http://localhost:8080/api/v1/questions/{question_id}/{voting.value}"
+
+    headers = {"Authorization": jwt_token}
+
+    return requests.request("POST", url, headers=headers, data={}).json()
