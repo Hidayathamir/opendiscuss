@@ -110,11 +110,12 @@ func (qs *QuestionService) syncQuestionStatistic(ctx context.Context, userQuesti
 
 	isVotingThumbsUp := voteOptionID == constant.VoteOptionThumbsUp
 	isVotingThumbsDown := voteOptionID == constant.VoteOptionThumbsDown
+	isVotingThumbsCancel := voteOptionID == constant.VoteOptionCancel
 
 	var err error
 
 	if isPreviousVoteThumbsUp {
-		if isVotingThumbsUp {
+		if isVotingThumbsUp || isVotingThumbsCancel {
 			err = qs.decrementQuestionThumbsUpCount(ctx, req.QuestionID)
 		} else if isVotingThumbsDown {
 			err = qs.decrementQuestionThumbsUpCountAndIncrementThumbsDownCount(ctx, req.QuestionID)
@@ -122,7 +123,7 @@ func (qs *QuestionService) syncQuestionStatistic(ctx context.Context, userQuesti
 	} else if isPreviousVoteThumbsDown {
 		if isVotingThumbsUp {
 			err = qs.incrementQuestionThumbsUpCountAndDecrementThumbsDownCount(ctx, req.QuestionID)
-		} else if isVotingThumbsDown {
+		} else if isVotingThumbsDown || isVotingThumbsCancel {
 			err = qs.decrementQuestionThumbsDownCount(ctx, req.QuestionID)
 		}
 	} else if isPreviousVoteCancel {
