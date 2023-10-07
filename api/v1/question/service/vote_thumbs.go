@@ -35,20 +35,15 @@ func (qs *QuestionService) voteThumbs(ctx context.Context, req dto.ReqVoteThumbs
 }
 
 func (qs *QuestionService) handleFirstTimeUserVoteQuestion(ctx context.Context, req dto.ReqVoteThumbs, voteOptionID constant.VoteOption) (int, error) {
-	var userQuestionVoteID int
-	var err error
-
-	err = qs.trManager.WithTransaction(ctx, func(ctx context.Context) error {
+	err := qs.trManager.WithTransaction(ctx, func(ctx context.Context) error {
 		reqCreateUserQuestionVote := req.ToReqCreateUserQuestionVote()
 		reqCreateUserQuestionVote.VoteOptionID = voteOptionID
-		userQuestionVoteID, err = qs.createUserQuestionVote(ctx, reqCreateUserQuestionVote)
+		_, err := qs.createUserQuestionVote(ctx, reqCreateUserQuestionVote)
 		if err != nil {
 			return errors.Wrap(err, "error create user question vote")
 		}
 
 		isVotingThumbsUp := voteOptionID == constant.VoteOptionThumbsUp
-
-		var err error
 
 		if isVotingThumbsUp {
 			err = qs.incrementQuestionThumbsUpCount(ctx, req.QuestionID)
@@ -67,7 +62,7 @@ func (qs *QuestionService) handleFirstTimeUserVoteQuestion(ctx context.Context, 
 		return 0, errors.Wrap(err, "error transaction create user and increment question_statistics")
 	}
 
-	return userQuestionVoteID, nil
+	return req.QuestionID, nil
 }
 
 func (qs *QuestionService) handleNTimeUserVoteQuestion(ctx context.Context, req dto.ReqVoteThumbs, voteOptionID constant.VoteOption, userQuestionVote model.UserQuestionVote) (int, error) {
@@ -100,7 +95,7 @@ func (qs *QuestionService) handleNTimeUserVoteQuestion(ctx context.Context, req 
 		return 0, errors.Wrap(err, "error transaction update user_question_votes and sync question_statistics")
 	}
 
-	return userQuestionVote.ID, nil
+	return req.QuestionID, nil
 }
 
 func (qs *QuestionService) syncQuestionStatistic(ctx context.Context, userQuestionVote model.UserQuestionVote, voteOptionID constant.VoteOption, req dto.ReqVoteThumbs) error {
