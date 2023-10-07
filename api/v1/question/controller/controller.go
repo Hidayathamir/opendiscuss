@@ -8,6 +8,9 @@ import (
 type IQuestionController interface {
 	CreateQuestion(ctx *gin.Context)
 	GetQuestionList(ctx *gin.Context)
+	GetQuestionByID(ctx *gin.Context)
+	VoteThumbsUp(ctx *gin.Context)
+	VoteThumbsDown(ctx *gin.Context)
 }
 
 type QuestionController struct {

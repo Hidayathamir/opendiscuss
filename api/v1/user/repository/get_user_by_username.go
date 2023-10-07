@@ -11,6 +11,7 @@ func (ur *UserRepository) GetUserByUsername(ctx context.Context, username string
 	user := model.User{}
 
 	q := ur.db.Table(model.USER_TABLE_NAME).
+		Model(&model.User{}).
 		Where(fmt.Sprintf("%s = ?", model.USER_USERNAME), username).
 		First(&user)
 
