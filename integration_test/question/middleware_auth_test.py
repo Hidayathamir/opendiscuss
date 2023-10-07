@@ -18,14 +18,10 @@ def test_error_no_jwt_token():
 
 
 def test_error_jwt_token_invalid():
-    url = "http://localhost:8080/api/v1/questions"
-    headers = {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTY5MzIwNjksInVsZXJfaWQiOiIyInd.K1sEDl8Ke7VdYszxZd6ODH6DVZU7L4jTYs5GgeyIXIU",
-        "Content-Type": "application/json",
-    }
-    payload = json.dumps({"question": "what is promise?"})
+    jwt_token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTY5MzIwNjksInVsZXJfaWQiOiIyInd.K1sEDl8Ke7VdYszxZd6ODH6DVZU7L4jTYs5GgeyIXIU"
+    question = "what is promise?"
 
-    response = requests.request("POST", url, headers=headers, data=payload).json()
+    response = utils.create_question(jwt_token, question)
 
     assert response["data"] == None
     assert response["error"] != None

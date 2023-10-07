@@ -5,7 +5,7 @@ def test_vote_thumbs_up():
     username = utils.generate_string()
     password = utils.generate_string()
     utils.register_user(username, password)
-    jwt_token = utils.login_user(username, password)
+    jwt_token = utils.login_user_get_token(username, password)
     question = "who are you?"
     question_id = utils.create_question_get_id(jwt_token, question)
 
@@ -30,7 +30,7 @@ def test_vote_thumbs_down():
     username = utils.generate_string()
     password = utils.generate_string()
     utils.register_user(username, password)
-    jwt_token = utils.login_user(username, password)
+    jwt_token = utils.login_user_get_token(username, password)
     question = "who are you?"
     question_id = utils.create_question_get_id(jwt_token, question)
 
@@ -55,7 +55,7 @@ def test_vote_thumbs_up_then_thumbs_up():
     username = utils.generate_string()
     password = utils.generate_string()
     utils.register_user(username, password)
-    jwt_token = utils.login_user(username, password)
+    jwt_token = utils.login_user_get_token(username, password)
     question = "who are you?"
     question_id = utils.create_question_get_id(jwt_token, question)
 
@@ -96,7 +96,7 @@ def test_vote_thumbs_up_then_thumbs_down():
     username = utils.generate_string()
     password = utils.generate_string()
     utils.register_user(username, password)
-    jwt_token = utils.login_user(username, password)
+    jwt_token = utils.login_user_get_token(username, password)
     question = "who are you?"
     question_id = utils.create_question_get_id(jwt_token, question)
 
@@ -137,7 +137,7 @@ def test_vote_thumbs_down_then_thumbs_up():
     username = utils.generate_string()
     password = utils.generate_string()
     utils.register_user(username, password)
-    jwt_token = utils.login_user(username, password)
+    jwt_token = utils.login_user_get_token(username, password)
     question = "who are you?"
     question_id = utils.create_question_get_id(jwt_token, question)
 
@@ -178,7 +178,7 @@ def test_vote_thumbs_down_then_thumbs_down():
     username = utils.generate_string()
     password = utils.generate_string()
     utils.register_user(username, password)
-    jwt_token = utils.login_user(username, password)
+    jwt_token = utils.login_user_get_token(username, password)
     question = "who are you?"
     question_id = utils.create_question_get_id(jwt_token, question)
 
@@ -219,7 +219,7 @@ def test_usera_thumbs_up_userb_thumbs_up():
     usera_username = utils.generate_string()
     usera_password = utils.generate_string()
     utils.register_user(usera_username, usera_password)
-    usera_jwt_token = utils.login_user(usera_username, usera_password)
+    usera_jwt_token = utils.login_user_get_token(usera_username, usera_password)
     usera_question = "who are you?"
     usera_question_id = utils.create_question_get_id(usera_jwt_token, usera_question)
 
@@ -244,7 +244,7 @@ def test_usera_thumbs_up_userb_thumbs_up():
     userb_username = utils.generate_string()
     userb_password = utils.generate_string()
     utils.register_user(userb_username, userb_password)
-    userb_jwt_token = utils.login_user(userb_username, userb_password)
+    userb_jwt_token = utils.login_user_get_token(userb_username, userb_password)
 
     response = utils.vote_question(
         userb_jwt_token, usera_question_id, utils.VoteOption.ThumbsUp
@@ -269,7 +269,7 @@ def test_usera_thumbs_up_userb_thumbs_down():
     usera_username = utils.generate_string()
     usera_password = utils.generate_string()
     utils.register_user(usera_username, usera_password)
-    usera_jwt_token = utils.login_user(usera_username, usera_password)
+    usera_jwt_token = utils.login_user_get_token(usera_username, usera_password)
     usera_question = "who are you?"
     usera_question_id = utils.create_question_get_id(usera_jwt_token, usera_question)
 
@@ -294,7 +294,7 @@ def test_usera_thumbs_up_userb_thumbs_down():
     userb_username = utils.generate_string()
     userb_password = utils.generate_string()
     utils.register_user(userb_username, userb_password)
-    userb_jwt_token = utils.login_user(userb_username, userb_password)
+    userb_jwt_token = utils.login_user_get_token(userb_username, userb_password)
 
     response = utils.vote_question(
         userb_jwt_token, usera_question_id, utils.VoteOption.ThumbsDown
@@ -319,7 +319,7 @@ def test_usera_thumbs_down_userb_thumbs_down():
     usera_username = utils.generate_string()
     usera_password = utils.generate_string()
     utils.register_user(usera_username, usera_password)
-    usera_jwt_token = utils.login_user(usera_username, usera_password)
+    usera_jwt_token = utils.login_user_get_token(usera_username, usera_password)
     usera_question = "who are you?"
     usera_question_id = utils.create_question_get_id(usera_jwt_token, usera_question)
 
@@ -344,7 +344,7 @@ def test_usera_thumbs_down_userb_thumbs_down():
     userb_username = utils.generate_string()
     userb_password = utils.generate_string()
     utils.register_user(userb_username, userb_password)
-    userb_jwt_token = utils.login_user(userb_username, userb_password)
+    userb_jwt_token = utils.login_user_get_token(userb_username, userb_password)
 
     response = utils.vote_question(
         userb_jwt_token, usera_question_id, utils.VoteOption.ThumbsDown

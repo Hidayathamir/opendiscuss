@@ -20,9 +20,11 @@ def login_user(username, password):
     url = "http://localhost:8080/api/v1/login"
     headers = {"Content-Type": "application/json"}
     payload = json.dumps({"username": username, "password": password})
+    return requests.request("POST", url, headers=headers, data=payload).json()
 
-    response = requests.request("POST", url, headers=headers, data=payload).json()
 
+def login_user_get_token(username, password):
+    response = login_user(username, password)
     return response["data"]["token"]
 
 
