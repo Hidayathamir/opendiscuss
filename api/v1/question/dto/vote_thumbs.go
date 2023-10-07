@@ -27,5 +27,5 @@ func (r ReqVoteThumbs) ToReqCreateUserQuestionVote() ReqCreateUserQuestionVote {
 }
 
 type ResVoteThumbs struct {
-	ID int `json:"id"`
+	QuestionID int `json:"question_id"`
 }

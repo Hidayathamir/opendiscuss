@@ -33,9 +33,8 @@ func (qc *QuestionController) voteThumbs(ctx *gin.Context, voteOptionID constant
 		QuestionID: questionID,
 	}
 
-	userQuestionVoteID := -1
 	if voteOptionID == constant.VoteOptionThumbsUp {
-		userQuestionVoteID, err = qc.service.VoteThumbsUp(ctx, req)
+		questionID, err = qc.service.VoteThumbsUp(ctx, req)
 		if err != nil {
 			err = errors.Wrap(err, "error vote thumbs up")
 			utils.WriteResponse(ctx, http.StatusBadRequest, nil, err)
@@ -44,7 +43,7 @@ func (qc *QuestionController) voteThumbs(ctx *gin.Context, voteOptionID constant
 	}
 
 	if voteOptionID == constant.VoteOptionThumbsDown {
-		userQuestionVoteID, err = qc.service.VoteThumbsDown(ctx, req)
+		questionID, err = qc.service.VoteThumbsDown(ctx, req)
 		if err != nil {
 			err = errors.Wrap(err, "error vote thumbs down")
 			utils.WriteResponse(ctx, http.StatusBadRequest, nil, err)
@@ -53,7 +52,7 @@ func (qc *QuestionController) voteThumbs(ctx *gin.Context, voteOptionID constant
 	}
 
 	res := dto.ResVoteThumbs{
-		ID: userQuestionVoteID,
+		QuestionID: questionID,
 	}
 
 	utils.WriteResponse(ctx, http.StatusOK, res, nil)
