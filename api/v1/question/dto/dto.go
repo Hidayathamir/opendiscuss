@@ -3,6 +3,7 @@ package dto
 import "time"
 
 type QuestionHighlight struct {
+	ID         int       `json:"id"`
 	Author     string    `json:"author"`
 	Question   string    `json:"question"`
 	ThumbsUp   string    `json:"thumbs_up"`

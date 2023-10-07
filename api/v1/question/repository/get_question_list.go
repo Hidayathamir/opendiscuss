@@ -12,6 +12,7 @@ func (qr *QuestionRepository) GetQuestionList(ctx context.Context) ([]dto.Questi
 	questions := []dto.QuestionHighlight{}
 
 	querySelect := `
+		%s, 
 		%s as author, 
 		%s as question, 
 		%s, 
@@ -21,7 +22,7 @@ func (qr *QuestionRepository) GetQuestionList(ctx context.Context) ([]dto.Questi
 	`
 	querySelect = fmt.Sprintf(
 		querySelect,
-		model.USER_USERNAME, model.QUESTION_BODY,
+		model.QUESTION_ID, model.USER_USERNAME, model.QUESTION_BODY,
 		model.QUESTION_STATISTIC_THUMBS_UP, model.QUESTION_STATISTIC_THUMBS_DOWN,
 		model.QUESTION_CREATED_AT, model.QUESTION_UPDATED_AT,
 	)
