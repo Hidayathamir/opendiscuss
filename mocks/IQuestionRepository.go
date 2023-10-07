@@ -289,6 +289,59 @@ func (_c *IQuestionRepository_DecrementQuestionStatisticColumnThumbsUpByQuestion
 	return _c
 }
 
+// GetQuestionByID provides a mock function with given fields: ctx, ID
+func (_m *IQuestionRepository) GetQuestionByID(ctx context.Context, ID int) (dto.QuestionHighlight, error) {
+	ret := _m.Called(ctx, ID)
+
+	var r0 dto.QuestionHighlight
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, int) (dto.QuestionHighlight, error)); ok {
+		return rf(ctx, ID)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, int) dto.QuestionHighlight); ok {
+		r0 = rf(ctx, ID)
+	} else {
+		r0 = ret.Get(0).(dto.QuestionHighlight)
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, int) error); ok {
+		r1 = rf(ctx, ID)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// IQuestionRepository_GetQuestionByID_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetQuestionByID'
+type IQuestionRepository_GetQuestionByID_Call struct {
+	*mock.Call
+}
+
+// GetQuestionByID is a helper method to define mock.On call
+//   - ctx context.Context
+//   - ID int
+func (_e *IQuestionRepository_Expecter) GetQuestionByID(ctx interface{}, ID interface{}) *IQuestionRepository_GetQuestionByID_Call {
+	return &IQuestionRepository_GetQuestionByID_Call{Call: _e.mock.On("GetQuestionByID", ctx, ID)}
+}
+
+func (_c *IQuestionRepository_GetQuestionByID_Call) Run(run func(ctx context.Context, ID int)) *IQuestionRepository_GetQuestionByID_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(int))
+	})
+	return _c
+}
+
+func (_c *IQuestionRepository_GetQuestionByID_Call) Return(_a0 dto.QuestionHighlight, _a1 error) *IQuestionRepository_GetQuestionByID_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *IQuestionRepository_GetQuestionByID_Call) RunAndReturn(run func(context.Context, int) (dto.QuestionHighlight, error)) *IQuestionRepository_GetQuestionByID_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetQuestionList provides a mock function with given fields: ctx
 func (_m *IQuestionRepository) GetQuestionList(ctx context.Context) ([]dto.QuestionHighlight, error) {
 	ret := _m.Called(ctx)

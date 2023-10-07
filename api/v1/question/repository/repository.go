@@ -12,6 +12,7 @@ import (
 type IQuestionRepository interface {
 	CreateQuestion(ctx context.Context, question model.Question) (int, error)
 	CreateQuestionStatistic(ctx context.Context, question model.QuestionStatistic) (int, error)
+	GetQuestionByID(ctx context.Context, ID int) (dto.QuestionHighlight, error)
 	GetQuestionList(ctx context.Context) ([]dto.QuestionHighlight, error)
 	CreateUserQuestionVote(ctx context.Context, userQuestionVote model.UserQuestionVote) (int, error)
 	GetUserQuestionVoteByUserIDAndQuestionID(ctx context.Context, req dto.ReqGetUserQuestionVoteByUserIDAndQuestionID) (model.UserQuestionVote, error)
