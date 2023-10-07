@@ -15,13 +15,12 @@ func (qr *QuestionRepository) IncrementQuestionStatisticColumnThumbsUpByQuestion
 	}
 
 	questionIDEqualTo := fmt.Sprintf("%s = ?", model.QUESTION_STATISTIC_QUESTION_ID)
-	thumbsUpEqualTo := fmt.Sprintf("%s = ?", model.QUESTION_STATISTIC_THUMBS_UP)
 	incrementThumbsUp := gorm.Expr(fmt.Sprintf("%s + 1", model.QUESTION_STATISTIC_THUMBS_UP))
 
 	q := qr.getTrOrDB(ctx).
 		Table(model.QUESTION_STATISTIC_TABLE_NAME).
 		Where(questionIDEqualTo, questionID).
-		Update(thumbsUpEqualTo, incrementThumbsUp)
+		Update(model.QUESTION_STATISTIC_THUMBS_UP, incrementThumbsUp)
 
 	if q.Error != nil {
 		return 0, q.Error
@@ -36,13 +35,12 @@ func (qr *QuestionRepository) IncrementQuestionStatisticColumnThumbsDownByQuesti
 	}
 
 	questionIDEqualTo := fmt.Sprintf("%s = ?", model.QUESTION_STATISTIC_QUESTION_ID)
-	thumbsDownEqualTo := fmt.Sprintf("%s = ?", model.QUESTION_STATISTIC_THUMBS_DOWN)
 	incrementThumbsDown := gorm.Expr(fmt.Sprintf("%s + 1", model.QUESTION_STATISTIC_THUMBS_DOWN))
 
 	q := qr.getTrOrDB(ctx).
 		Table(model.QUESTION_STATISTIC_TABLE_NAME).
 		Where(questionIDEqualTo, questionID).
-		Update(thumbsDownEqualTo, incrementThumbsDown)
+		Update(model.QUESTION_STATISTIC_THUMBS_DOWN, incrementThumbsDown)
 
 	if q.Error != nil {
 		return 0, q.Error
@@ -57,13 +55,12 @@ func (qr *QuestionRepository) DecrementQuestionStatisticColumnThumbsUpByQuestion
 	}
 
 	questionIDEqualTo := fmt.Sprintf("%s = ?", model.QUESTION_STATISTIC_QUESTION_ID)
-	thumbsUpEqualTo := fmt.Sprintf("%s = ?", model.QUESTION_STATISTIC_THUMBS_UP)
 	decrementThumbsUp := gorm.Expr(fmt.Sprintf("%s - 1", model.QUESTION_STATISTIC_THUMBS_UP))
 
 	q := qr.getTrOrDB(ctx).
 		Table(model.QUESTION_STATISTIC_TABLE_NAME).
 		Where(questionIDEqualTo, questionID).
-		Update(thumbsUpEqualTo, decrementThumbsUp)
+		Update(model.QUESTION_STATISTIC_THUMBS_UP, decrementThumbsUp)
 
 	if q.Error != nil {
 		return 0, q.Error
@@ -78,13 +75,12 @@ func (qr *QuestionRepository) DecrementQuestionStatisticColumnThumbsDownByQuesti
 	}
 
 	questionIDEqualTo := fmt.Sprintf("%s = ?", model.QUESTION_STATISTIC_QUESTION_ID)
-	thumbsDownEqualTo := fmt.Sprintf("%s = ?", model.QUESTION_STATISTIC_THUMBS_DOWN)
 	decrementThumbsDown := gorm.Expr(fmt.Sprintf("%s - 1", model.QUESTION_STATISTIC_THUMBS_DOWN))
 
 	q := qr.getTrOrDB(ctx).
 		Table(model.QUESTION_STATISTIC_TABLE_NAME).
 		Where(questionIDEqualTo, questionID).
-		Update(thumbsDownEqualTo, decrementThumbsDown)
+		Update(model.QUESTION_STATISTIC_THUMBS_DOWN, decrementThumbsDown)
 
 	if q.Error != nil {
 		return 0, q.Error
