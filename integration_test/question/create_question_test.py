@@ -1,5 +1,3 @@
-import requests
-import json
 from . import utils
 
 
@@ -8,15 +6,9 @@ def test_success():
     password = "dummy password"
     utils.register_user(username, password)
     jwt_token = utils.login_user(username, password)
+    question = "what is promise?"
 
-    url = "http://localhost:8080/api/v1/questions"
-    headers = {
-        "Authorization": jwt_token,
-        "Content-Type": "application/json",
-    }
-    payload = json.dumps({"question": "what is promise?"})
-
-    response = requests.request("POST", url, headers=headers, data=payload).json()
+    response = utils.create_question(jwt_token, question)
 
     assert response["data"] != None
     assert response["data"]["question_id"] != 0

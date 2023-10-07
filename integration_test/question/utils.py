@@ -1,3 +1,4 @@
+from enum import Enum
 import json
 from random import choice
 import requests
@@ -33,8 +34,11 @@ def create_question(jwt_token, question):
     }
     payload = json.dumps({"question": question})
 
-    response = requests.request("POST", url, headers=headers, data=payload).json()
+    return requests.request("POST", url, headers=headers, data=payload).json()
 
+
+def create_question_get_id(jwt_token, question):
+    response = create_question(jwt_token, question)
     return response["data"]["question_id"]
 
 
@@ -42,9 +46,6 @@ def get_question_detail(questoin_id):
     url = f"http://localhost:8080/api/v1/questions/{questoin_id}"
 
     return requests.request("GET", url, headers={}, data={}).json()
-
-
-from enum import Enum
 
 
 class VoteOption(Enum):

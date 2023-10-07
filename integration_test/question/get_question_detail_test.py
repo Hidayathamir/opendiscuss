@@ -23,7 +23,7 @@ def test_success_create_question_then_get_question_detail():
     utils.register_user(username, password)
     jwt_token = utils.login_user(username, password)
     question = "what is stackoverflow?"
-    question_id = utils.create_question(jwt_token, question)
+    question_id = utils.create_question_get_id(jwt_token, question)
 
     response = utils.get_question_detail(question_id)
 
