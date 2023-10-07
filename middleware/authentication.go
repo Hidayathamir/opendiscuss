@@ -15,7 +15,7 @@ func Authenticate(ctx *gin.Context) {
 	auth := ctx.Request.Header.Get(constant.HEADER_AUTHORIZATION)
 	if len(auth) == 0 {
 		err := errors.New("error auth token not found")
-		err = errors.Wrap(err, "please add header 'Authorization: Bearer you-token'")
+		err = errors.Wrap(err, "please add header 'Authorization: Bearer your-token'")
 		utils.WriteResponse(ctx, http.StatusUnauthorized, nil, err)
 		ctx.Abort()
 		return
@@ -25,7 +25,7 @@ func Authenticate(ctx *gin.Context) {
 
 	if len(authSlice) != 2 {
 		err := errors.New("error token format")
-		err = errors.Wrap(err, "token format should be 'Bearer you-token'")
+		err = errors.Wrap(err, "token format should be 'Bearer your-token'")
 		utils.WriteResponse(ctx, http.StatusUnauthorized, nil, err)
 		ctx.Abort()
 		return
