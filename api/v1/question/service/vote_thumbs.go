@@ -46,41 +46,28 @@ func (qs *QuestionService) handleFirstTimeUserVoteQuestion(ctx context.Context, 
 			return errors.Wrap(err, "error create user question vote")
 		}
 
-		err := qs.incrementQuestionStatisticOnVote(ctx, req, voteOptionID)
+		isVotingThumbsUp := voteOptionID == constant.VoteOptionThumbsUp
+
+		var err error
+
+		if isVotingThumbsUp {
+			err = qs.incrementQuestionThumbsUpCount(ctx, req.QuestionID)
+		} else {
+			err = qs.incrementQuestionThumbsDownCount(ctx, req.QuestionID)
+		}
+
 		if err != nil {
 			return errors.Wrap(err, "error increment question_statistics")
 		}
 
 		return nil
 	})
+
 	if err != nil {
 		return 0, errors.Wrap(err, "error transaction create user and increment question_statistics")
 	}
 
 	return userQuestionVoteID, nil
-}
-
-func (qs *QuestionService) incrementQuestionStatisticOnVote(ctx context.Context, req dto.ReqVoteThumbs, voteOptionID constant.VoteOption) error {
-	isVotingThumbsUp := voteOptionID == constant.VoteOptionThumbsUp
-	if isVotingThumbsUp {
-		_, err := qs.repo.IncrementQuestionStatisticColumnThumbsUpByQuestionID(
-			ctx,
-			req.QuestionID,
-		)
-		if err != nil {
-			return errors.Wrap(err, "error increment question_statistics column thumbs_up")
-		}
-	} else {
-		_, err := qs.repo.IncrementQuestionStatisticColumnThumbsDownByQuestionID(
-			ctx,
-			req.QuestionID,
-		)
-		if err != nil {
-			return errors.Wrap(err, "error increment question_statistics column thumbs_down")
-		}
-	}
-
-	return nil
 }
 
 func (qs *QuestionService) handleNTimeUserVoteQuestion(ctx context.Context, req dto.ReqVoteThumbs, voteOptionID constant.VoteOption, userQuestionVote model.UserQuestionVote) (int, error) {
@@ -101,7 +88,12 @@ func (qs *QuestionService) handleNTimeUserVoteQuestion(ctx context.Context, req 
 			return errors.Wrap(err, "error update user_question_votes")
 		}
 
-		return qs.syncQuestionStatistic(ctx, userQuestionVote, voteOptionID, req)
+		err = qs.syncQuestionStatistic(ctx, userQuestionVote, voteOptionID, req)
+		if err != nil {
+			return errors.Wrap(err, "error sync question_statistics")
+		}
+
+		return nil
 	})
 
 	if err != nil {
@@ -113,55 +105,89 @@ func (qs *QuestionService) handleNTimeUserVoteQuestion(ctx context.Context, req 
 
 func (qs *QuestionService) syncQuestionStatistic(ctx context.Context, userQuestionVote model.UserQuestionVote, voteOptionID constant.VoteOption, req dto.ReqVoteThumbs) error {
 	isPreviousVoteThumbsUp := userQuestionVote.VoteOptionID == constant.VoteOptionThumbsUp
-	if isPreviousVoteThumbsUp {
-		isVotingThumbsDown := voteOptionID == constant.VoteOptionThumbsDown
-		return qs.handlePreviousVoteThumbsUp(ctx, isVotingThumbsDown, req.QuestionID)
-	}
+	isPreviousVoteThumbsDown := userQuestionVote.VoteOptionID == constant.VoteOptionThumbsDown
+	isPreviousVoteCancel := userQuestionVote.VoteOptionID == constant.VoteOptionCancel
 
 	isVotingThumbsUp := voteOptionID == constant.VoteOptionThumbsUp
-	return qs.handlePreviousVoteThumbsDown(ctx, isVotingThumbsUp, req.QuestionID)
-}
+	isVotingThumbsDown := voteOptionID == constant.VoteOptionThumbsDown
 
-func (qs *QuestionService) handlePreviousVoteThumbsUp(ctx context.Context, isVotingThumbsDown bool, questionID int) error {
-	if isVotingThumbsDown {
-		_, err := qs.repo.IncrementQuestionStatisticColumnThumbsDownByQuestionID(
-			ctx,
-			questionID,
-		)
-		if err != nil {
-			return errors.Wrap(err, "error increment question_statistics column thumbs_down")
+	var err error
+
+	if isPreviousVoteThumbsUp {
+		if isVotingThumbsUp {
+			err = qs.decrementQuestionThumbsUpCount(ctx, req.QuestionID)
+		} else if isVotingThumbsDown {
+			err = qs.decrementQuestionThumbsUpCountAndIncrementThumbsDownCount(ctx, req.QuestionID)
+		}
+	} else if isPreviousVoteThumbsDown {
+		if isVotingThumbsUp {
+			err = qs.incrementQuestionThumbsUpCountAndDecrementThumbsDownCount(ctx, req.QuestionID)
+		} else if isVotingThumbsDown {
+			err = qs.decrementQuestionThumbsDownCount(ctx, req.QuestionID)
+		}
+	} else if isPreviousVoteCancel {
+		if isVotingThumbsUp {
+			err = qs.incrementQuestionThumbsUpCount(ctx, req.QuestionID)
+		} else if isVotingThumbsDown {
+			err = qs.incrementQuestionThumbsDownCount(ctx, req.QuestionID)
 		}
 	}
 
-	_, err := qs.repo.DecrementQuestionStatisticColumnThumbsUpByQuestionID(
-		ctx,
-		questionID,
-	)
-	if err != nil {
-		return errors.Wrap(err, "error decrement question_statistics column thumbs_up")
-	}
+	return err
+}
 
+func (qs *QuestionService) decrementQuestionThumbsUpCount(ctx context.Context, questionID int) error {
+	_, err := qs.repo.DecrementQuestionStatisticColumnThumbsUpByQuestionID(ctx, questionID)
+	if err != nil {
+		return errors.Wrap(err, constant.ERR_DECREMENT_QUESTION_THUMBS_UP)
+	}
 	return nil
 }
 
-func (qs *QuestionService) handlePreviousVoteThumbsDown(ctx context.Context, isVotingThumbsUp bool, questionID int) error {
-	if isVotingThumbsUp {
-		_, err := qs.repo.IncrementQuestionStatisticColumnThumbsUpByQuestionID(
-			ctx,
-			questionID,
-		)
-		if err != nil {
-			return errors.Wrap(err, "error increment question_statistics column thumbs_up")
-		}
-	}
-
-	_, err := qs.repo.DecrementQuestionStatisticColumnThumbsDownByQuestionID(
-		ctx,
-		questionID,
-	)
+func (qs *QuestionService) decrementQuestionThumbsUpCountAndIncrementThumbsDownCount(ctx context.Context, questionID int) error {
+	_, err := qs.repo.DecrementQuestionStatisticColumnThumbsUpByQuestionID(ctx, questionID)
 	if err != nil {
-		return errors.Wrap(err, "error decrement question_statistics column thumbs_down")
+		return errors.Wrap(err, constant.ERR_DECREMENT_QUESTION_THUMBS_UP)
 	}
+	_, err = qs.repo.IncrementQuestionStatisticColumnThumbsDownByQuestionID(ctx, questionID)
+	if err != nil {
+		return errors.Wrap(err, constant.ERR_INCREMENT_QUESTION_THUMBS_DOWN)
+	}
+	return nil
+}
 
+func (qs *QuestionService) incrementQuestionThumbsUpCountAndDecrementThumbsDownCount(ctx context.Context, questionID int) error {
+	_, err := qs.repo.IncrementQuestionStatisticColumnThumbsUpByQuestionID(ctx, questionID)
+	if err != nil {
+		return errors.Wrap(err, constant.ERR_INCREMENT_QUESTION_THUMBS_UP)
+	}
+	_, err = qs.repo.DecrementQuestionStatisticColumnThumbsDownByQuestionID(ctx, questionID)
+	if err != nil {
+		return errors.Wrap(err, constant.ERR_DECREMENT_QUESTION_THUMBS_DOWN)
+	}
+	return nil
+}
+
+func (qs *QuestionService) decrementQuestionThumbsDownCount(ctx context.Context, questionID int) error {
+	_, err := qs.repo.DecrementQuestionStatisticColumnThumbsDownByQuestionID(ctx, questionID)
+	if err != nil {
+		return errors.Wrap(err, constant.ERR_DECREMENT_QUESTION_THUMBS_DOWN)
+	}
+	return nil
+}
+
+func (qs *QuestionService) incrementQuestionThumbsUpCount(ctx context.Context, questionID int) error {
+	_, err := qs.repo.IncrementQuestionStatisticColumnThumbsUpByQuestionID(ctx, questionID)
+	if err != nil {
+		return errors.Wrap(err, constant.ERR_INCREMENT_QUESTION_THUMBS_UP)
+	}
+	return nil
+}
+
+func (qs *QuestionService) incrementQuestionThumbsDownCount(ctx context.Context, questionID int) error {
+	_, err := qs.repo.IncrementQuestionStatisticColumnThumbsDownByQuestionID(ctx, questionID)
+	if err != nil {
+		return errors.Wrap(err, constant.ERR_INCREMENT_QUESTION_THUMBS_DOWN)
+	}
 	return nil
 }
