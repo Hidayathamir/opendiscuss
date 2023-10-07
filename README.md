@@ -1,8 +1,37 @@
 # opendiscuss
 
+community platform
+
 ## user stories
 
-[opendiscuss mvp stories](https://docs.google.com/document/d/1QaN062BwKNMS8vxxDgYFGQ3SQkWDC67etQO1ZacL6d4/edit?usp=sharing).
+- [x] user can register
+- [x] user can login
+- [x] user can ask question
+- [x] user can see question, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count
+- [x] user can vote thumbsup | thumbsdown question
+- [ ] user can edit (only) their question
+- [ ] user can delete (only) their question
+- [ ] user can answer question
+- [ ] user can see answer, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by highest thumbsup-thumbsdown count.
+- [ ] user can vote thumbsup | thumbsdown answer
+- [ ] user can edit (only) their answer
+- [ ] user can delete (only) their answer
+- [ ] user can comment on answer
+- [ ] user can see comment, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by highest thumbsup-thumbsdown count.
+- [ ] user can vote thumbsup | thumbsdown comment
+- [ ] user can edit (only) their comment
+- [ ] user can delete (only) their comment
+- [ ] user can comment on comment (subcomment)
+- [ ] user can see subcomment, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by highest thumbsup-thumbsdown count.
+- [ ] user can vote thumbsup | thumbsdown subcomment
+- [ ] user can edit (only) their subcomment
+- [ ] user can delete (only) their subcomment
+
+## entiry relationship diagram
+
+https://dbdiagram.io/d/opendiscuss-erd-64e854c002bd1c4a5e6392d5
+
+https://dbdocs.io/hidayathamir/opendiscuss
 
 ## quick start
 
