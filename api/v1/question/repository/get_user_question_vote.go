@@ -21,6 +21,7 @@ func (qr *QuestionRepository) GetUserQuestionVoteByUserIDAndQuestionID(ctx conte
 	questionIDEqualTo := fmt.Sprintf("%s = ?", model.USER_QUESTION_VOTES_QUESTION_ID)
 
 	q := qr.getTrOrDB(ctx).
+		Model(&model.UserQuestionVote{}).
 		Table(model.USER_QUESTION_VOTES_TABLE_NAME).
 		Where(userIDEqualTo, req.UserID).
 		Where(questionIDEqualTo, req.QuestionID).
