@@ -1,4 +1,4 @@
-from . import utils
+from utils import utils
 
 
 headers = {"Content-Type": "application/json"}

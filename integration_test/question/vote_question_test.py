@@ -1,4 +1,4 @@
-from . import utils
+from utils import utils
 
 
 def test_vote_thumbs_up():
