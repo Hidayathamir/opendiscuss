@@ -11,7 +11,7 @@ import (
 
 func (us *UserService) RegisterUser(ctx context.Context, req dto.ReqRegisterUser) (int, error) {
 	if err := req.Validate(); err != nil {
-		return 0, errors.Wrap(err, constant.ERR_REQ_BODY_VALIDATE)
+		return 0, errors.Wrap(err, constant.ERR_REQ_VALIDATE)
 	}
 
 	hashedPassword, err := utils.GenerateHashPassword(req.Password)
