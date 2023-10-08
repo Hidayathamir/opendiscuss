@@ -1,5 +1,5 @@
 package dto
 
 type ResGetAnswerByID struct {
-	Answer AnswerHighligh
+	Answer AnswerHighligh `json:"answer"`
 }
