@@ -14,6 +14,8 @@ func AddAnswerRouter(db *gorm.DB, r *gin.RouterGroup) {
 	ac := getAnswerController(db)
 
 	r.POST("/questions/:questionid/answers", middleware.Authenticate, ac.CreateAnswer)
+	r.GET("/questions/:questionid/answers", ac.GetAnswerListByQuestionID)
+	r.GET("/answers/:answerid", ac.GetAnswerByID)
 }
 
 func getAnswerController(db *gorm.DB) controller.IAnswerController {

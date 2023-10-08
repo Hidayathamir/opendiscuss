@@ -7,6 +7,8 @@ import (
 
 type IAnswerController interface {
 	CreateAnswer(ctx *gin.Context)
+	GetAnswerListByQuestionID(ctx *gin.Context)
+	GetAnswerByID(ctx *gin.Context)
 }
 
 type AnswerController struct {

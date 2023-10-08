@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 
+	"github.com/Hidayathamir/opendiscuss/api/v1/answer/dto"
 	"github.com/Hidayathamir/opendiscuss/model"
 	"github.com/Hidayathamir/opendiscuss/utils"
 	"gorm.io/gorm"
@@ -11,6 +12,8 @@ import (
 type IAnswerRepository interface {
 	CreateAnswer(ctx context.Context, answer model.Answer) (int, error)
 	CreateAnswerStatistic(ctx context.Context, answerStatistic model.AnswerStatistic) (int, error)
+	GetAnswerListByQuestionID(ctx context.Context, questoinID int) ([]dto.AnswerHighligh, error)
+	GetAnswerByID(ctx context.Context, answerID int) (dto.AnswerHighligh, error)
 }
 
 type AnswerRepository struct {
