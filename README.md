@@ -9,7 +9,7 @@ community platform
 - [x] user can ask question
 - [x] user can see question, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count
 - [x] user can vote thumbsup | thumbsdown question
-- [ ] user can edit (only) their question
+- [x] user can edit (only) their question
 - [ ] user can delete (only) their question
 - [ ] user can answer question
 - [ ] user can see answer, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by highest thumbsup-thumbsdown count.
