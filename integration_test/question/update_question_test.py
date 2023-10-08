@@ -4,8 +4,7 @@ from utils import utils
 def test_success():
     username = utils.generate_string()
     password = utils.generate_string()
-    response = utils.register_user(username, password)
-    user_id = response["data"]["user_id"]
+    user_id = utils.register_user_get_id(username, password)
     jwt_token = utils.login_user_get_token(username, password)
     question = "what is SOLID?"
     question_id = utils.create_question_get_id(jwt_token, question)
@@ -30,8 +29,7 @@ def test_success():
 def test_error_update_other_user_question():
     usera_username = utils.generate_string()
     usera_password = utils.generate_string()
-    response = utils.register_user(usera_username, usera_password)
-    usera_user_id = response["data"]["user_id"]
+    usera_user_id = utils.register_user_get_id(usera_username, usera_password)
     usera_jwt_token = utils.login_user_get_token(usera_username, usera_password)
     usera_question = "what is SOLID?"
     usera_question_id = utils.create_question_get_id(usera_jwt_token, usera_question)

@@ -8,20 +8,10 @@ def test_error_question_not_found():
     assert "record not found" in response["error"]
 
 
-def test_success():
-    response = utils.get_question_detail(1)
-
-    assert response["data"] != None
-    question_id: int = response["data"]["question"]["id"]
-    assert question_id == 1
-    assert response["error"] == None
-
-
 def test_success_create_question_then_get_question_detail():
     username = utils.generate_string()
     password = "dummy password"
-    response = utils.register_user(username, password)
-    user_id = response["data"]["user_id"]
+    user_id = utils.register_user_get_id(username, password)
     jwt_token = utils.login_user_get_token(username, password)
     question = "what is stackoverflow?"
     question_id = utils.create_question_get_id(jwt_token, question)

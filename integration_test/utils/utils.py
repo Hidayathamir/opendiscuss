@@ -16,6 +16,11 @@ def register_user(username, password):
     return requests.request("POST", url, headers=headers, data=payload).json()
 
 
+def register_user_get_id(username, password):
+    response = register_user(username, password)
+    return response["data"]["user_id"]
+
+
 def login_user(username, password):
     url = "http://localhost:8080/api/v1/login"
     headers = {"Content-Type": "application/json"}
