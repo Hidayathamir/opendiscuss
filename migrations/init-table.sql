@@ -50,7 +50,7 @@ CREATE TABLE `user_answer_votes` (
 
 CREATE TABLE `answers` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `questions_id` int NOT NULL,
+  `question_id` int NOT NULL,
   `user_id` int NOT NULL,
   `body` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT (now()),
@@ -125,7 +125,7 @@ ALTER TABLE `user_answer_votes` ADD FOREIGN KEY (`answer_id`) REFERENCES `answer
 
 ALTER TABLE `user_answer_votes` ADD FOREIGN KEY (`vote_option_id`) REFERENCES `vote_options` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `answers` ADD FOREIGN KEY (`questions_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE;
+ALTER TABLE `answers` ADD FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `answers` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
