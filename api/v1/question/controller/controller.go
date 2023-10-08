@@ -11,6 +11,7 @@ type IQuestionController interface {
 	GetQuestionByID(ctx *gin.Context)
 	VoteThumbsUp(ctx *gin.Context)
 	VoteThumbsDown(ctx *gin.Context)
+	UpdateQuestionByID(ctx *gin.Context)
 }
 
 type QuestionController struct {

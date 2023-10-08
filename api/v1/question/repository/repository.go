@@ -21,6 +21,7 @@ type IQuestionRepository interface {
 	IncrementQuestionStatisticColumnThumbsDownByQuestionID(ctx context.Context, questionID int) (int, error)
 	DecrementQuestionStatisticColumnThumbsUpByQuestionID(ctx context.Context, questionID int) (int, error)
 	DecrementQuestionStatisticColumnThumbsDownByQuestionID(ctx context.Context, questionID int) (int, error)
+	UpdateQuestionByID(ctx context.Context, req dto.ReqUpdateQuestionByID) (int, error)
 }
 
 type QuestionRepository struct {
