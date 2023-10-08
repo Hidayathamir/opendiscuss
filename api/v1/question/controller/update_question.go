@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/Hidayathamir/opendiscuss/api/v1/question/dto"
 	"github.com/Hidayathamir/opendiscuss/constant"
@@ -10,8 +11,15 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (qc *QuestionController) CreateQuestion(ctx *gin.Context) {
-	req := dto.ReqCreateQuestion{}
+func (qc *QuestionController) UpdateQuestionByID(ctx *gin.Context) {
+	questionID, err := strconv.Atoi(ctx.Param("questionid"))
+	if err != nil {
+		err = errors.Wrap(err, "error convert question id")
+		utils.WriteResponse(ctx, http.StatusBadRequest, nil, err)
+		return
+	}
+
+	req := dto.ReqUpdateQuestionByID{}
 
 	if err := ctx.ShouldBindJSON(&req); err != nil {
 		err = errors.Wrap(err, constant.ERR_INVALID_REQUEST_BODY)
@@ -19,16 +27,17 @@ func (qc *QuestionController) CreateQuestion(ctx *gin.Context) {
 		return
 	}
 
+	req.QuestionID = questionID
 	req.UserID = ctx.GetInt(constant.CTX_USER_ID)
 
-	questionID, err := qc.service.CreateQuestion(ctx, req)
+	questionID, err = qc.service.UpdateQuestionByID(ctx, req)
 	if err != nil {
-		err = errors.Wrap(err, "error create question")
+		err = errors.Wrap(err, "error update question by id")
 		utils.WriteResponse(ctx, http.StatusBadRequest, nil, err)
 		return
 	}
 
-	res := dto.ResCreateQuestion{
+	res := dto.ResUpdateQuestionByID{
 		QuestionID: questionID,
 	}
 

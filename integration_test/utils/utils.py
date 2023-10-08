@@ -61,3 +61,15 @@ def vote_question(jwt_token, question_id, voting: VoteOption):
     headers = {"Authorization": jwt_token}
 
     return requests.request("POST", url, headers=headers, data={}).json()
+
+
+def update_question(jwt_token, questoin_id, question):
+    url = f"http://localhost:8080/api/v1/questions/{questoin_id}"
+
+    payload = json.dumps({"question": question})
+    headers = {
+        "Authorization": jwt_token,
+        "Content-Type": "application/json",
+    }
+
+    return requests.request("PUT", url, headers=headers, data=payload).json()

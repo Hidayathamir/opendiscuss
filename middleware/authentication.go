@@ -48,7 +48,7 @@ func Authenticate(ctx *gin.Context) {
 		return
 	}
 
-	userIDAny, ok := claims["user_id"]
+	userIDAny, ok := claims[constant.JWT_CLAIM_USER_ID]
 	if !ok {
 		err = errors.New("error user_id not found in token")
 		utils.WriteResponse(ctx, http.StatusUnauthorized, nil, err)
@@ -72,5 +72,5 @@ func Authenticate(ctx *gin.Context) {
 		return
 	}
 
-	ctx.Set("user_id", userID)
+	ctx.Set(constant.CTX_USER_ID, userID)
 }

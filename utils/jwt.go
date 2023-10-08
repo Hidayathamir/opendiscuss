@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/Hidayathamir/opendiscuss/constant"
 	"github.com/Hidayathamir/opendiscuss/environtment"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/pkg/errors"
@@ -14,8 +15,8 @@ var signingMethod = jwt.SigningMethodHS256
 func GenerateUserJWTToken(userID int) (string, error) {
 	expireIn := time.Hour * time.Duration(environtment.JWT_EXPIRE_HOUR)
 	token := jwt.NewWithClaims(signingMethod, jwt.MapClaims{
-		"user_id": fmt.Sprintf("%d", userID),
-		"exp":     time.Now().Add(expireIn).Unix(),
+		constant.JWT_CLAIM_USER_ID: fmt.Sprintf("%d", userID),
+		"exp":                      time.Now().Add(expireIn).Unix(),
 	})
 
 	tokenString, err := token.SignedString([]byte(environtment.JWT_SIGN_KEY))

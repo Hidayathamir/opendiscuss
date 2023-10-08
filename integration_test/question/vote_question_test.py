@@ -21,8 +21,8 @@ def test_vote_thumbs_up():
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
     assert response["data"]["question"]["question"] == question
-    assert response["data"]["question"]["thumbs_up"] == "1"
-    assert response["data"]["question"]["thumbs_down"] == "0"
+    assert response["data"]["question"]["thumbs_up"] == 1
+    assert response["data"]["question"]["thumbs_down"] == 0
     assert response["error"] == None
 
 
@@ -46,8 +46,8 @@ def test_vote_thumbs_down():
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
     assert response["data"]["question"]["question"] == question
-    assert response["data"]["question"]["thumbs_up"] == "0"
-    assert response["data"]["question"]["thumbs_down"] == "1"
+    assert response["data"]["question"]["thumbs_up"] == 0
+    assert response["data"]["question"]["thumbs_down"] == 1
     assert response["error"] == None
 
 
@@ -71,8 +71,8 @@ def test_vote_thumbs_up_then_thumbs_up():
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
     assert response["data"]["question"]["question"] == question
-    assert response["data"]["question"]["thumbs_up"] == "1"
-    assert response["data"]["question"]["thumbs_down"] == "0"
+    assert response["data"]["question"]["thumbs_up"] == 1
+    assert response["data"]["question"]["thumbs_down"] == 0
     assert response["error"] == None
 
     response = utils.vote_question(jwt_token, question_id, utils.VoteOption.ThumbsUp)
@@ -87,8 +87,8 @@ def test_vote_thumbs_up_then_thumbs_up():
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
     assert response["data"]["question"]["question"] == question
-    assert response["data"]["question"]["thumbs_up"] == "0"
-    assert response["data"]["question"]["thumbs_down"] == "0"
+    assert response["data"]["question"]["thumbs_up"] == 0
+    assert response["data"]["question"]["thumbs_down"] == 0
     assert response["error"] == None
 
 
@@ -112,8 +112,8 @@ def test_vote_thumbs_up_then_thumbs_down():
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
     assert response["data"]["question"]["question"] == question
-    assert response["data"]["question"]["thumbs_up"] == "1"
-    assert response["data"]["question"]["thumbs_down"] == "0"
+    assert response["data"]["question"]["thumbs_up"] == 1
+    assert response["data"]["question"]["thumbs_down"] == 0
     assert response["error"] == None
 
     response = utils.vote_question(jwt_token, question_id, utils.VoteOption.ThumbsDown)
@@ -128,8 +128,8 @@ def test_vote_thumbs_up_then_thumbs_down():
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
     assert response["data"]["question"]["question"] == question
-    assert response["data"]["question"]["thumbs_up"] == "0"
-    assert response["data"]["question"]["thumbs_down"] == "1"
+    assert response["data"]["question"]["thumbs_up"] == 0
+    assert response["data"]["question"]["thumbs_down"] == 1
     assert response["error"] == None
 
 
@@ -153,8 +153,8 @@ def test_vote_thumbs_down_then_thumbs_up():
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
     assert response["data"]["question"]["question"] == question
-    assert response["data"]["question"]["thumbs_up"] == "0"
-    assert response["data"]["question"]["thumbs_down"] == "1"
+    assert response["data"]["question"]["thumbs_up"] == 0
+    assert response["data"]["question"]["thumbs_down"] == 1
     assert response["error"] == None
 
     response = utils.vote_question(jwt_token, question_id, utils.VoteOption.ThumbsUp)
@@ -169,8 +169,8 @@ def test_vote_thumbs_down_then_thumbs_up():
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
     assert response["data"]["question"]["question"] == question
-    assert response["data"]["question"]["thumbs_up"] == "1"
-    assert response["data"]["question"]["thumbs_down"] == "0"
+    assert response["data"]["question"]["thumbs_up"] == 1
+    assert response["data"]["question"]["thumbs_down"] == 0
     assert response["error"] == None
 
 
@@ -194,8 +194,8 @@ def test_vote_thumbs_down_then_thumbs_down():
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
     assert response["data"]["question"]["question"] == question
-    assert response["data"]["question"]["thumbs_up"] == "0"
-    assert response["data"]["question"]["thumbs_down"] == "1"
+    assert response["data"]["question"]["thumbs_up"] == 0
+    assert response["data"]["question"]["thumbs_down"] == 1
     assert response["error"] == None
 
     response = utils.vote_question(jwt_token, question_id, utils.VoteOption.ThumbsDown)
@@ -210,8 +210,8 @@ def test_vote_thumbs_down_then_thumbs_down():
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
     assert response["data"]["question"]["question"] == question
-    assert response["data"]["question"]["thumbs_up"] == "0"
-    assert response["data"]["question"]["thumbs_down"] == "0"
+    assert response["data"]["question"]["thumbs_up"] == 0
+    assert response["data"]["question"]["thumbs_down"] == 0
     assert response["error"] == None
 
 
@@ -237,8 +237,8 @@ def test_usera_thumbs_up_userb_thumbs_up():
     assert usera_response["data"]["question"]["id"] == usera_question_id
     assert usera_response["data"]["question"]["author"] == usera_username
     assert usera_response["data"]["question"]["question"] == usera_question
-    assert usera_response["data"]["question"]["thumbs_up"] == "1"
-    assert usera_response["data"]["question"]["thumbs_down"] == "0"
+    assert usera_response["data"]["question"]["thumbs_up"] == 1
+    assert usera_response["data"]["question"]["thumbs_down"] == 0
     assert usera_response["error"] == None
 
     userb_username = utils.generate_string()
@@ -260,8 +260,8 @@ def test_usera_thumbs_up_userb_thumbs_up():
     assert response["data"]["question"]["id"] == usera_question_id
     assert response["data"]["question"]["author"] == usera_username
     assert response["data"]["question"]["question"] == usera_question
-    assert response["data"]["question"]["thumbs_up"] == "2"
-    assert response["data"]["question"]["thumbs_down"] == "0"
+    assert response["data"]["question"]["thumbs_up"] == 2
+    assert response["data"]["question"]["thumbs_down"] == 0
     assert response["error"] == None
 
 
@@ -287,8 +287,8 @@ def test_usera_thumbs_up_userb_thumbs_down():
     assert usera_response["data"]["question"]["id"] == usera_question_id
     assert usera_response["data"]["question"]["author"] == usera_username
     assert usera_response["data"]["question"]["question"] == usera_question
-    assert usera_response["data"]["question"]["thumbs_up"] == "1"
-    assert usera_response["data"]["question"]["thumbs_down"] == "0"
+    assert usera_response["data"]["question"]["thumbs_up"] == 1
+    assert usera_response["data"]["question"]["thumbs_down"] == 0
     assert usera_response["error"] == None
 
     userb_username = utils.generate_string()
@@ -310,8 +310,8 @@ def test_usera_thumbs_up_userb_thumbs_down():
     assert response["data"]["question"]["id"] == usera_question_id
     assert response["data"]["question"]["author"] == usera_username
     assert response["data"]["question"]["question"] == usera_question
-    assert response["data"]["question"]["thumbs_up"] == "1"
-    assert response["data"]["question"]["thumbs_down"] == "1"
+    assert response["data"]["question"]["thumbs_up"] == 1
+    assert response["data"]["question"]["thumbs_down"] == 1
     assert response["error"] == None
 
 
@@ -337,8 +337,8 @@ def test_usera_thumbs_down_userb_thumbs_down():
     assert usera_response["data"]["question"]["id"] == usera_question_id
     assert usera_response["data"]["question"]["author"] == usera_username
     assert usera_response["data"]["question"]["question"] == usera_question
-    assert usera_response["data"]["question"]["thumbs_up"] == "0"
-    assert usera_response["data"]["question"]["thumbs_down"] == "1"
+    assert usera_response["data"]["question"]["thumbs_up"] == 0
+    assert usera_response["data"]["question"]["thumbs_down"] == 1
     assert usera_response["error"] == None
 
     userb_username = utils.generate_string()
@@ -360,6 +360,6 @@ def test_usera_thumbs_down_userb_thumbs_down():
     assert response["data"]["question"]["id"] == usera_question_id
     assert response["data"]["question"]["author"] == usera_username
     assert response["data"]["question"]["question"] == usera_question
-    assert response["data"]["question"]["thumbs_up"] == "0"
-    assert response["data"]["question"]["thumbs_down"] == "2"
+    assert response["data"]["question"]["thumbs_up"] == 0
+    assert response["data"]["question"]["thumbs_down"] == 2
     assert response["error"] == None

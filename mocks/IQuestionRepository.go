@@ -555,6 +555,59 @@ func (_c *IQuestionRepository_IncrementQuestionStatisticColumnThumbsUpByQuestion
 	return _c
 }
 
+// UpdateQuestionByID provides a mock function with given fields: ctx, req
+func (_m *IQuestionRepository) UpdateQuestionByID(ctx context.Context, req dto.ReqUpdateQuestionByID) (int, error) {
+	ret := _m.Called(ctx, req)
+
+	var r0 int
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, dto.ReqUpdateQuestionByID) (int, error)); ok {
+		return rf(ctx, req)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, dto.ReqUpdateQuestionByID) int); ok {
+		r0 = rf(ctx, req)
+	} else {
+		r0 = ret.Get(0).(int)
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, dto.ReqUpdateQuestionByID) error); ok {
+		r1 = rf(ctx, req)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// IQuestionRepository_UpdateQuestionByID_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateQuestionByID'
+type IQuestionRepository_UpdateQuestionByID_Call struct {
+	*mock.Call
+}
+
+// UpdateQuestionByID is a helper method to define mock.On call
+//   - ctx context.Context
+//   - req dto.ReqUpdateQuestionByID
+func (_e *IQuestionRepository_Expecter) UpdateQuestionByID(ctx interface{}, req interface{}) *IQuestionRepository_UpdateQuestionByID_Call {
+	return &IQuestionRepository_UpdateQuestionByID_Call{Call: _e.mock.On("UpdateQuestionByID", ctx, req)}
+}
+
+func (_c *IQuestionRepository_UpdateQuestionByID_Call) Run(run func(ctx context.Context, req dto.ReqUpdateQuestionByID)) *IQuestionRepository_UpdateQuestionByID_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(dto.ReqUpdateQuestionByID))
+	})
+	return _c
+}
+
+func (_c *IQuestionRepository_UpdateQuestionByID_Call) Return(_a0 int, _a1 error) *IQuestionRepository_UpdateQuestionByID_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *IQuestionRepository_UpdateQuestionByID_Call) RunAndReturn(run func(context.Context, dto.ReqUpdateQuestionByID) (int, error)) *IQuestionRepository_UpdateQuestionByID_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpdateUserQuestionVoteColumnVoteOptionIDByID provides a mock function with given fields: ctx, req
 func (_m *IQuestionRepository) UpdateUserQuestionVoteColumnVoteOptionIDByID(ctx context.Context, req dto.ReqUpdateUserQuestionVoteColumnVoteOptionIDByID) (int, error) {
 	ret := _m.Called(ctx, req)
