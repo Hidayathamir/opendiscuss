@@ -15,6 +15,7 @@ type IQuestionService interface {
 	VoteThumbsUp(ctx context.Context, req dto.ReqVoteThumbs) (int, error)
 	VoteThumbsDown(ctx context.Context, req dto.ReqVoteThumbs) (int, error)
 	UpdateQuestionByID(ctx context.Context, req dto.ReqUpdateQuestionByID) (int, error)
+	DeleteQuestionByID(ctx context.Context, req dto.ReqDeleteQuestionByID) (int, error)
 }
 
 type QuestionService struct {
