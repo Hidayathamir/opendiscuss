@@ -33,6 +33,6 @@ def test_success_create_question_then_get_question_detail():
     assert response["data"]["question"]["author"] == username
     assert response["data"]["question"]["author_id"] == user_id
     assert response["data"]["question"]["question"] == question
-    assert response["data"]["question"]["thumbs_up"] == "0"
-    assert response["data"]["question"]["thumbs_down"] == "0"
+    assert response["data"]["question"]["thumbs_up"] == 0
+    assert response["data"]["question"]["thumbs_down"] == 0
     assert response["error"] == None

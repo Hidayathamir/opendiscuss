@@ -23,8 +23,8 @@ def test_success():
     assert response["data"]["question"]["author"] == username
     assert response["data"]["question"]["author_id"] == user_id
     assert response["data"]["question"]["question"] == new_question
-    assert response["data"]["question"]["thumbs_up"] == "0"
-    assert response["data"]["question"]["thumbs_down"] == "0"
+    assert response["data"]["question"]["thumbs_up"] == 0
+    assert response["data"]["question"]["thumbs_down"] == 0
 
 
 def test_error_update_other_user_question():
@@ -56,5 +56,5 @@ def test_error_update_other_user_question():
     assert response["data"]["question"]["author"] == usera_username
     assert response["data"]["question"]["author_id"] == usera_user_id
     assert response["data"]["question"]["question"] == usera_question
-    assert response["data"]["question"]["thumbs_up"] == "0"
-    assert response["data"]["question"]["thumbs_down"] == "0"
+    assert response["data"]["question"]["thumbs_up"] == 0
+    assert response["data"]["question"]["thumbs_down"] == 0
