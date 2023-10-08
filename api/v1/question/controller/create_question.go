@@ -19,7 +19,7 @@ func (qc *QuestionController) CreateQuestion(ctx *gin.Context) {
 		return
 	}
 
-	req.UserID = ctx.GetInt("user_id")
+	req.UserID = ctx.GetInt(constant.CTX_USER_ID)
 
 	questionID, err := qc.service.CreateQuestion(ctx, req)
 	if err != nil {

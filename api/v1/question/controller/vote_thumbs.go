@@ -29,7 +29,7 @@ func (qc *QuestionController) voteThumbs(ctx *gin.Context, voteOptionID constant
 	}
 
 	req := dto.ReqVoteThumbs{
-		UserID:     ctx.GetInt("user_id"),
+		UserID:     ctx.GetInt(constant.CTX_USER_ID),
 		QuestionID: questionID,
 	}
 
