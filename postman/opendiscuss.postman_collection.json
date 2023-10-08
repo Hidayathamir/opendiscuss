@@ -158,6 +158,43 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "UpdateQuestionByID",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"question\": \"update question\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/questions/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"questions",
+										"1"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -212,7 +249,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"abdan\",\n    \"password\": \"abdan\"\n}",
+									"raw": "{\n    \"username\": \"hidayat\",\n    \"password\": \"hidayat\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
