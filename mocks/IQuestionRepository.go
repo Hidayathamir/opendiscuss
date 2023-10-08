@@ -289,6 +289,59 @@ func (_c *IQuestionRepository_DecrementQuestionStatisticColumnThumbsUpByQuestion
 	return _c
 }
 
+// DeleteQuestionByID provides a mock function with given fields: ctx, req
+func (_m *IQuestionRepository) DeleteQuestionByID(ctx context.Context, req dto.ReqDeleteQuestionByID) (int, error) {
+	ret := _m.Called(ctx, req)
+
+	var r0 int
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, dto.ReqDeleteQuestionByID) (int, error)); ok {
+		return rf(ctx, req)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, dto.ReqDeleteQuestionByID) int); ok {
+		r0 = rf(ctx, req)
+	} else {
+		r0 = ret.Get(0).(int)
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, dto.ReqDeleteQuestionByID) error); ok {
+		r1 = rf(ctx, req)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// IQuestionRepository_DeleteQuestionByID_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteQuestionByID'
+type IQuestionRepository_DeleteQuestionByID_Call struct {
+	*mock.Call
+}
+
+// DeleteQuestionByID is a helper method to define mock.On call
+//   - ctx context.Context
+//   - req dto.ReqDeleteQuestionByID
+func (_e *IQuestionRepository_Expecter) DeleteQuestionByID(ctx interface{}, req interface{}) *IQuestionRepository_DeleteQuestionByID_Call {
+	return &IQuestionRepository_DeleteQuestionByID_Call{Call: _e.mock.On("DeleteQuestionByID", ctx, req)}
+}
+
+func (_c *IQuestionRepository_DeleteQuestionByID_Call) Run(run func(ctx context.Context, req dto.ReqDeleteQuestionByID)) *IQuestionRepository_DeleteQuestionByID_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(dto.ReqDeleteQuestionByID))
+	})
+	return _c
+}
+
+func (_c *IQuestionRepository_DeleteQuestionByID_Call) Return(_a0 int, _a1 error) *IQuestionRepository_DeleteQuestionByID_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *IQuestionRepository_DeleteQuestionByID_Call) RunAndReturn(run func(context.Context, dto.ReqDeleteQuestionByID) (int, error)) *IQuestionRepository_DeleteQuestionByID_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetQuestionByID provides a mock function with given fields: ctx, ID
 func (_m *IQuestionRepository) GetQuestionByID(ctx context.Context, ID int) (dto.QuestionHighlight, error) {
 	ret := _m.Called(ctx, ID)

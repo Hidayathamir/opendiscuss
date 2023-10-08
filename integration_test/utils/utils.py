@@ -16,6 +16,11 @@ def register_user(username, password):
     return requests.request("POST", url, headers=headers, data=payload).json()
 
 
+def register_user_get_id(username, password):
+    response = register_user(username, password)
+    return response["data"]["user_id"]
+
+
 def login_user(username, password):
     url = "http://localhost:8080/api/v1/login"
     headers = {"Content-Type": "application/json"}
@@ -44,8 +49,8 @@ def create_question_get_id(jwt_token, question):
     return response["data"]["question_id"]
 
 
-def get_question_detail(questoin_id):
-    url = f"http://localhost:8080/api/v1/questions/{questoin_id}"
+def get_question_detail(question_id):
+    url = f"http://localhost:8080/api/v1/questions/{question_id}"
 
     return requests.request("GET", url, headers={}, data={}).json()
 
@@ -63,8 +68,8 @@ def vote_question(jwt_token, question_id, voting: VoteOption):
     return requests.request("POST", url, headers=headers, data={}).json()
 
 
-def update_question(jwt_token, questoin_id, question):
-    url = f"http://localhost:8080/api/v1/questions/{questoin_id}"
+def update_question(jwt_token, question_id, question):
+    url = f"http://localhost:8080/api/v1/questions/{question_id}"
 
     payload = json.dumps({"question": question})
     headers = {
@@ -73,3 +78,14 @@ def update_question(jwt_token, questoin_id, question):
     }
 
     return requests.request("PUT", url, headers=headers, data=payload).json()
+
+
+def delete_question(jwt_token, question_id):
+    url = f"http://localhost:8080/api/v1/questions/{question_id}"
+
+    headers = {
+        "Authorization": jwt_token,
+        "Content-Type": "application/json",
+    }
+
+    return requests.request("DELETE", url, headers=headers, data={}).json()

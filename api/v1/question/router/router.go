@@ -19,6 +19,7 @@ func AddQuestionRouter(db *gorm.DB, r *gin.RouterGroup) {
 	r.POST("/questions/:questionid/thumbsup", middleware.Authenticate, qc.VoteThumbsUp)
 	r.POST("/questions/:questionid/thumbsdown", middleware.Authenticate, qc.VoteThumbsDown)
 	r.PUT("/questions/:questionid", middleware.Authenticate, qc.UpdateQuestionByID)
+	r.DELETE("/questions/:questionid", middleware.Authenticate, qc.DeleteQuestionByID)
 }
 
 func getQuestionController(db *gorm.DB) controller.IQuestionController {
