@@ -11,8 +11,8 @@ community platform
 - [x] user can vote thumbsup | thumbsdown question
 - [x] user can edit (only) their question
 - [x] user can delete (only) their question
-- [ ] user can answer question
-- [ ] user can see answer, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by highest thumbsup-thumbsdown count.
+- [x] user can answer question
+- [x] user can see answer, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by highest thumbsup-thumbsdown count.
 - [ ] user can vote thumbsup | thumbsdown answer
 - [ ] user can edit (only) their answer
 - [ ] user can delete (only) their answer

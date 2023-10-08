@@ -43,5 +43,5 @@ func (qs *QuestionService) CreateQuestion(ctx context.Context, req dto.ReqCreate
 		return 0, errors.Wrap(err, "error transaction create question and create question statistic")
 	}
 
-	return questionID, err
+	return questionID, nil
 }
