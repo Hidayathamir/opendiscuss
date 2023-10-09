@@ -14,6 +14,13 @@ type IAnswerRepository interface {
 	CreateAnswerStatistic(ctx context.Context, answerStatistic model.AnswerStatistic) (int, error)
 	GetAnswerListByQuestionID(ctx context.Context, questoinID int) ([]dto.AnswerHighligh, error)
 	GetAnswerByID(ctx context.Context, answerID int) (dto.AnswerHighligh, error)
+	CreateUserAnswerVote(ctx context.Context, userAnswerVote model.UserAnswerVote) (int, error)
+	GetUserAnswerVoteByUserIDAndAnswerID(ctx context.Context, req dto.ReqGetUserAnswerVoteByUserIDAndAnswerID) (model.UserAnswerVote, error)
+	UpdateUserAnswerVoteColumnVoteOptionIDByID(ctx context.Context, req dto.ReqUpdateUserAnswerVoteColumnVoteOptionIDByID) (int, error)
+	IncrementAnswerStatisticColumnThumbsUpByAnswerID(ctx context.Context, answerID int) (int, error)
+	IncrementAnswerStatisticColumnThumbsDownByAnswerID(ctx context.Context, answerID int) (int, error)
+	DecrementAnswerStatisticColumnThumbsUpByAnswerID(ctx context.Context, answerID int) (int, error)
+	DecrementAnswerStatisticColumnThumbsDownByAnswerID(ctx context.Context, answerID int) (int, error)
 }
 
 type AnswerRepository struct {
