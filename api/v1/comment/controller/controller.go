@@ -7,6 +7,8 @@ import (
 
 type ICommentController interface {
 	CreateComment(ctx *gin.Context)
+	GetCommentList(ctx *gin.Context)
+	GetCommentByID(ctx *gin.Context)
 }
 
 type CommentController struct {

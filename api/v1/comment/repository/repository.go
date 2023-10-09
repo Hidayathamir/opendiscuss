@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 
+	"github.com/Hidayathamir/opendiscuss/api/v1/comment/dto"
 	"github.com/Hidayathamir/opendiscuss/model"
 	"github.com/Hidayathamir/opendiscuss/utils"
 	"gorm.io/gorm"
@@ -11,6 +12,8 @@ import (
 type ICommentRepository interface {
 	CreateComment(ctx context.Context, comment model.Comment) (int, error)
 	CreateCommentStatistic(ctx context.Context, commentStatistic model.CommentStatistic) (int, error)
+	GetCommentByID(ctx context.Context, ID int) (dto.CommentHighlight, error)
+	GetCommentList(ctx context.Context) ([]dto.CommentHighlight, error)
 }
 
 type CommentRepository struct {
