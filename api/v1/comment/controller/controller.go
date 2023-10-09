@@ -2,9 +2,11 @@ package controller
 
 import (
 	"github.com/Hidayathamir/opendiscuss/api/v1/comment/service"
+	"github.com/gin-gonic/gin"
 )
 
 type ICommentController interface {
+	CreateComment(ctx *gin.Context)
 }
 
 type CommentController struct {
