@@ -9,8 +9,8 @@ import (
 	"github.com/Hidayathamir/opendiscuss/model"
 )
 
-func (ar *AnswerRepository) GetAnswerListByQuestionID(ctx context.Context, questoinID int) ([]dto.AnswerHighligh, error) {
-	if questoinID == 0 {
+func (ar *AnswerRepository) GetAnswerListByQuestionID(ctx context.Context, questionID int) ([]dto.AnswerHighligh, error) {
+	if questionID == 0 {
 		return nil, errors.New("question id can not be empty")
 	}
 
@@ -51,7 +51,7 @@ func (ar *AnswerRepository) GetAnswerListByQuestionID(ctx context.Context, quest
 		Table(model.ANSWER_TABLE_NAME).
 		Joins(queryJoinUser).
 		Joins(queryJoinAnswerStatistic).
-		Where(questionIDEqualTo, questoinID).
+		Where(questionIDEqualTo, questionID).
 		Find(&answers)
 
 	if q.Error != nil {
