@@ -22,6 +22,7 @@ type IAnswerRepository interface {
 	DecrementAnswerStatisticColumnThumbsUpByAnswerID(ctx context.Context, answerID int) (int, error)
 	DecrementAnswerStatisticColumnThumbsDownByAnswerID(ctx context.Context, answerID int) (int, error)
 	UpdateAnswerByID(ctx context.Context, req dto.ReqUpdateAnswerByID) (int, error)
+	DeleteAnswerByID(ctx context.Context, req dto.ReqDeleteAnswerByID) (int, error)
 }
 
 type AnswerRepository struct {

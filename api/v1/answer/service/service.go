@@ -15,6 +15,7 @@ type IAnswerService interface {
 	VoteThumbsUp(ctx context.Context, req dto.ReqVoteThumbs) (int, error)
 	VoteThumbsDown(ctx context.Context, req dto.ReqVoteThumbs) (int, error)
 	UpdateAnswerByID(ctx context.Context, req dto.ReqUpdateAnswerByID) (int, error)
+	DeleteAnswerByID(ctx context.Context, req dto.ReqDeleteAnswerByID) (int, error)
 }
 
 type AnswerService struct {
