@@ -123,3 +123,15 @@ def vote_answer(jwt_token, answer_id, voting: VoteOption):
     headers = {"Authorization": jwt_token}
 
     return requests.request("POST", url, headers=headers, data={}).json()
+
+
+def update_answer(jwt_token, answer_id, answer):
+    url = f"http://localhost:8080/api/v1/answers/{answer_id}"
+
+    payload = json.dumps({"answer": answer})
+    headers = {
+        "Authorization": jwt_token,
+        "Content-Type": "application/json",
+    }
+
+    return requests.request("PUT", url, headers=headers, data=payload).json()
