@@ -387,6 +387,70 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "VoteThumbsUp",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/answers/1/thumbsup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"answers",
+										"1",
+										"thumbsup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "VoteThumbsDown",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/answers/1/thumbsdown",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"answers",
+										"1",
+										"thumbsdown"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
