@@ -135,3 +135,14 @@ def update_answer(jwt_token, answer_id, answer):
     }
 
     return requests.request("PUT", url, headers=headers, data=payload).json()
+
+
+def delete_answer(jwt_token, answer_id):
+    url = f"http://localhost:8080/api/v1/answers/{answer_id}"
+
+    headers = {
+        "Authorization": jwt_token,
+        "Content-Type": "application/json",
+    }
+
+    return requests.request("DELETE", url, headers=headers, data={}).json()

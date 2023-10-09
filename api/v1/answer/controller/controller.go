@@ -12,6 +12,7 @@ type IAnswerController interface {
 	VoteThumbsUp(ctx *gin.Context)
 	VoteThumbsDown(ctx *gin.Context)
 	UpdateAnswerByID(ctx *gin.Context)
+	DeleteAnswerByID(ctx *gin.Context)
 }
 
 type AnswerController struct {
