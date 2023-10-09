@@ -27,7 +27,7 @@ def test_success():
     assert response["data"]["answer"]["thumbs_down"] == 0
 
 
-def test_error_update_other_user_question():
+def test_error_update_other_user_answer():
     usera_username = utils.generate_string()
     usera_password = utils.generate_string()
     usera_user_id = utils.register_user_get_id(usera_username, usera_password)
