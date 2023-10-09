@@ -9,6 +9,8 @@ type IAnswerController interface {
 	CreateAnswer(ctx *gin.Context)
 	GetAnswerListByQuestionID(ctx *gin.Context)
 	GetAnswerByID(ctx *gin.Context)
+	VoteThumbsUp(ctx *gin.Context)
+	VoteThumbsDown(ctx *gin.Context)
 }
 
 type AnswerController struct {

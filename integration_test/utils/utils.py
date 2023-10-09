@@ -115,3 +115,11 @@ def get_answer_list_by_question_id(question_id):
     url = f"http://localhost:8080/api/v1/questions/{question_id}/answers"
 
     return requests.request("GET", url, headers={}, data={}).json()
+
+
+def vote_answer(jwt_token, answer_id, voting: VoteOption):
+    url = f"http://localhost:8080/api/v1/answers/{answer_id}/{voting.value}"
+
+    headers = {"Authorization": jwt_token}
+
+    return requests.request("POST", url, headers=headers, data={}).json()

@@ -10,8 +10,10 @@ import (
 
 type IAnswerService interface {
 	CreateAnswer(ctx context.Context, req dto.ReqCreateAnswer) (int, error)
-	GetAnswerListByQuestionID(ctx context.Context, questoinID int) ([]dto.AnswerHighligh, error)
+	GetAnswerListByQuestionID(ctx context.Context, questionID int) ([]dto.AnswerHighligh, error)
 	GetAnswerByID(ctx context.Context, answerID int) (dto.AnswerHighligh, error)
+	VoteThumbsUp(ctx context.Context, req dto.ReqVoteThumbs) (int, error)
+	VoteThumbsDown(ctx context.Context, req dto.ReqVoteThumbs) (int, error)
 }
 
 type AnswerService struct {

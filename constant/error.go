@@ -12,3 +12,10 @@ const (
 	ERR_INCREMENT_QUESTION_THUMBS_DOWN = "error increment question thumbs down"
 	ERR_DECREMENT_QUESTION_THUMBS_DOWN = "error decrement question thumbs down"
 )
+
+const (
+	ERR_INCREMENT_ANSWER_THUMBS_UP   = "error increment answer thumbs up"
+	ERR_DECREMENT_ANSWER_THUMBS_UP   = "error decrement answer thumbs up"
+	ERR_INCREMENT_ANSWER_THUMBS_DOWN = "error increment answer thumbs down"
+	ERR_DECREMENT_ANSWER_THUMBS_DOWN = "error decrement answer thumbs down"
+)

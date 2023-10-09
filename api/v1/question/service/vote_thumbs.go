@@ -59,7 +59,7 @@ func (qs *QuestionService) handleFirstTimeUserVoteQuestion(ctx context.Context, 
 	})
 
 	if err != nil {
-		return 0, errors.Wrap(err, "error transaction create user and increment question_statistics")
+		return 0, errors.Wrap(err, "error transaction create user question vote and increment question_statistics")
 	}
 
 	return req.QuestionID, nil
