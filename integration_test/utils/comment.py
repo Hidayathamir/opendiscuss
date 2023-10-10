@@ -11,8 +11,8 @@ def create_comment(jwt_token, answer_id, comment):
     return requests.request("POST", url, headers=headers, data=payload).json()
 
 
-def create_comment_get_id(jwt_token, question_id, answer):
-    resposne = create_comment(jwt_token, question_id, answer)
+def create_comment_get_id(jwt_token, answer_id, comment):
+    resposne = create_comment(jwt_token, answer_id, comment)
     return resposne["data"]["comment_id"]
 
 
