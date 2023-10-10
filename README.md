@@ -18,7 +18,7 @@ community platform
 - [x] user can delete (only) their answer
 - [x] user can comment on answer
 - [x] user can see comment, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by highest thumbsup-thumbsdown count.
-- [ ] user can vote thumbsup | thumbsdown comment
+- [x] user can vote thumbsup | thumbsdown comment
 - [ ] user can edit (only) their comment
 - [ ] user can delete (only) their comment
 - [ ] user can comment on comment (subcomment)

@@ -14,6 +14,13 @@ type ICommentRepository interface {
 	CreateCommentStatistic(ctx context.Context, commentStatistic model.CommentStatistic) (int, error)
 	GetCommentByID(ctx context.Context, ID int) (dto.CommentHighlight, error)
 	GetCommentListByAnswerID(ctx context.Context, answerID int) ([]dto.CommentHighlight, error)
+	GetUserCommentVoteByUserIDAndCommentID(ctx context.Context, req dto.ReqGetUserCommentVoteByUserIDAndCommentID) (model.UserCommentVote, error)
+	CreateUserCommentVote(ctx context.Context, userCommentVote model.UserCommentVote) (int, error)
+	UpdateUserCommentVoteColumnVoteOptionIDByID(ctx context.Context, req dto.ReqUpdateUserCommentVoteColumnVoteOptionIDByID) (int, error)
+	IncrementCommentStatisticColumnThumbsUpByCommentID(ctx context.Context, commentID int) (int, error)
+	IncrementCommentStatisticColumnThumbsDownByCommentID(ctx context.Context, commentID int) (int, error)
+	DecrementCommentStatisticColumnThumbsUpByCommentID(ctx context.Context, commentID int) (int, error)
+	DecrementCommentStatisticColumnThumbsDownByCommentID(ctx context.Context, commentID int) (int, error)
 }
 
 type CommentRepository struct {

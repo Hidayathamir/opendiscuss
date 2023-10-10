@@ -12,6 +12,8 @@ type ICommentService interface {
 	CreateComment(ctx context.Context, req dto.ReqCreateComment) (int, error)
 	GetCommentByID(ctx context.Context, ID int) (dto.CommentHighlight, error)
 	GetCommentListByAnswerID(ctx context.Context, answerID int) ([]dto.CommentHighlight, error)
+	VoteThumbsUp(ctx context.Context, req dto.ReqVoteThumbs) (int, error)
+	VoteThumbsDown(ctx context.Context, req dto.ReqVoteThumbs) (int, error)
 }
 
 type CommentService struct {
