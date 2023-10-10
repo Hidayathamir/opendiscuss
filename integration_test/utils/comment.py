@@ -35,3 +35,15 @@ def vote_comment(jwt_token, comment_id, voting: VoteOption):
     headers = {"Authorization": jwt_token}
 
     return requests.request("POST", url, headers=headers, data={}).json()
+
+
+def update_comment(jwt_token, comment_id, comment):
+    url = f"http://localhost:8080/api/v1/comments/{comment_id}"
+
+    payload = json.dumps({"comment": comment})
+    headers = {
+        "Authorization": jwt_token,
+        "Content-Type": "application/json",
+    }
+
+    return requests.request("PUT", url, headers=headers, data=payload).json()
