@@ -453,7 +453,7 @@
 							"response": []
 						},
 						{
-							"name": "UpdateAnswerByID Copy",
+							"name": "UpdateAnswerByID",
 							"request": {
 								"method": "PUT",
 								"header": [
