@@ -23,6 +23,7 @@ def test_vote_thumbs_up():
     assert response["data"]["comment"]["id"] == comment_id
     assert response["data"]["comment"]["author"] == username
     assert response["data"]["comment"]["comment"] == comment
+    assert response["data"]["comment"]["thumbs_rate"] == 1
     assert response["data"]["comment"]["thumbs_up"] == 1
     assert response["data"]["comment"]["thumbs_down"] == 0
     assert response["error"] == None
@@ -50,6 +51,7 @@ def test_vote_thumbs_down():
     assert response["data"]["comment"]["id"] == comment_id
     assert response["data"]["comment"]["author"] == username
     assert response["data"]["comment"]["comment"] == comment
+    assert response["data"]["comment"]["thumbs_rate"] == -1
     assert response["data"]["comment"]["thumbs_up"] == 0
     assert response["data"]["comment"]["thumbs_down"] == 1
     assert response["error"] == None
@@ -77,6 +79,7 @@ def test_vote_thumbs_up_then_thumbs_up():
     assert response["data"]["comment"]["id"] == comment_id
     assert response["data"]["comment"]["author"] == username
     assert response["data"]["comment"]["comment"] == comment
+    assert response["data"]["comment"]["thumbs_rate"] == 1
     assert response["data"]["comment"]["thumbs_up"] == 1
     assert response["data"]["comment"]["thumbs_down"] == 0
     assert response["error"] == None
@@ -93,6 +96,7 @@ def test_vote_thumbs_up_then_thumbs_up():
     assert response["data"]["comment"]["id"] == comment_id
     assert response["data"]["comment"]["author"] == username
     assert response["data"]["comment"]["comment"] == comment
+    assert response["data"]["comment"]["thumbs_rate"] == 0
     assert response["data"]["comment"]["thumbs_up"] == 0
     assert response["data"]["comment"]["thumbs_down"] == 0
     assert response["error"] == None
@@ -120,6 +124,7 @@ def test_vote_thumbs_up_then_thumbs_down():
     assert response["data"]["comment"]["id"] == comment_id
     assert response["data"]["comment"]["author"] == username
     assert response["data"]["comment"]["comment"] == comment
+    assert response["data"]["comment"]["thumbs_rate"] == 1
     assert response["data"]["comment"]["thumbs_up"] == 1
     assert response["data"]["comment"]["thumbs_down"] == 0
     assert response["error"] == None
@@ -136,6 +141,7 @@ def test_vote_thumbs_up_then_thumbs_down():
     assert response["data"]["comment"]["id"] == comment_id
     assert response["data"]["comment"]["author"] == username
     assert response["data"]["comment"]["comment"] == comment
+    assert response["data"]["comment"]["thumbs_rate"] == -1
     assert response["data"]["comment"]["thumbs_up"] == 0
     assert response["data"]["comment"]["thumbs_down"] == 1
     assert response["error"] == None
@@ -163,6 +169,7 @@ def test_vote_thumbs_down_then_thumbs_up():
     assert response["data"]["comment"]["id"] == comment_id
     assert response["data"]["comment"]["author"] == username
     assert response["data"]["comment"]["comment"] == comment
+    assert response["data"]["comment"]["thumbs_rate"] == -1
     assert response["data"]["comment"]["thumbs_up"] == 0
     assert response["data"]["comment"]["thumbs_down"] == 1
     assert response["error"] == None
@@ -179,6 +186,7 @@ def test_vote_thumbs_down_then_thumbs_up():
     assert response["data"]["comment"]["id"] == comment_id
     assert response["data"]["comment"]["author"] == username
     assert response["data"]["comment"]["comment"] == comment
+    assert response["data"]["comment"]["thumbs_rate"] == 1
     assert response["data"]["comment"]["thumbs_up"] == 1
     assert response["data"]["comment"]["thumbs_down"] == 0
     assert response["error"] == None
@@ -206,6 +214,7 @@ def test_vote_thumbs_down_then_thumbs_down():
     assert response["data"]["comment"]["id"] == comment_id
     assert response["data"]["comment"]["author"] == username
     assert response["data"]["comment"]["comment"] == comment
+    assert response["data"]["comment"]["thumbs_rate"] == -1
     assert response["data"]["comment"]["thumbs_up"] == 0
     assert response["data"]["comment"]["thumbs_down"] == 1
     assert response["error"] == None
@@ -222,6 +231,7 @@ def test_vote_thumbs_down_then_thumbs_down():
     assert response["data"]["comment"]["id"] == comment_id
     assert response["data"]["comment"]["author"] == username
     assert response["data"]["comment"]["comment"] == comment
+    assert response["data"]["comment"]["thumbs_rate"] == 0
     assert response["data"]["comment"]["thumbs_up"] == 0
     assert response["data"]["comment"]["thumbs_down"] == 0
     assert response["error"] == None
@@ -255,6 +265,7 @@ def test_usera_thumbs_up_userb_thumbs_up():
     assert response["data"]["comment"]["id"] == usera_comment_id
     assert response["data"]["comment"]["author"] == usera_username
     assert response["data"]["comment"]["comment"] == usera_comment
+    assert response["data"]["comment"]["thumbs_rate"] == 1
     assert response["data"]["comment"]["thumbs_up"] == 1
     assert response["data"]["comment"]["thumbs_down"] == 0
     assert response["error"] == None
@@ -278,6 +289,7 @@ def test_usera_thumbs_up_userb_thumbs_up():
     assert response["data"]["comment"]["id"] == usera_comment_id
     assert response["data"]["comment"]["author"] == usera_username
     assert response["data"]["comment"]["comment"] == usera_comment
+    assert response["data"]["comment"]["thumbs_rate"] == 2
     assert response["data"]["comment"]["thumbs_up"] == 2
     assert response["data"]["comment"]["thumbs_down"] == 0
     assert response["error"] == None
@@ -311,6 +323,7 @@ def test_usera_thumbs_up_userb_thumbs_down():
     assert response["data"]["comment"]["id"] == usera_comment_id
     assert response["data"]["comment"]["author"] == usera_username
     assert response["data"]["comment"]["comment"] == usera_comment
+    assert response["data"]["comment"]["thumbs_rate"] == 1
     assert response["data"]["comment"]["thumbs_up"] == 1
     assert response["data"]["comment"]["thumbs_down"] == 0
     assert response["error"] == None
@@ -334,6 +347,7 @@ def test_usera_thumbs_up_userb_thumbs_down():
     assert response["data"]["comment"]["id"] == usera_comment_id
     assert response["data"]["comment"]["author"] == usera_username
     assert response["data"]["comment"]["comment"] == usera_comment
+    assert response["data"]["comment"]["thumbs_rate"] == 0
     assert response["data"]["comment"]["thumbs_up"] == 1
     assert response["data"]["comment"]["thumbs_down"] == 1
     assert response["error"] == None
@@ -367,6 +381,7 @@ def test_usera_thumbs_down_userb_thumbs_down():
     assert response["data"]["comment"]["id"] == usera_comment_id
     assert response["data"]["comment"]["author"] == usera_username
     assert response["data"]["comment"]["comment"] == usera_comment
+    assert response["data"]["comment"]["thumbs_rate"] == -1
     assert response["data"]["comment"]["thumbs_up"] == 0
     assert response["data"]["comment"]["thumbs_down"] == 1
     assert response["error"] == None
@@ -390,6 +405,7 @@ def test_usera_thumbs_down_userb_thumbs_down():
     assert response["data"]["comment"]["id"] == usera_comment_id
     assert response["data"]["comment"]["author"] == usera_username
     assert response["data"]["comment"]["comment"] == usera_comment
+    assert response["data"]["comment"]["thumbs_rate"] == -2
     assert response["data"]["comment"]["thumbs_up"] == 0
     assert response["data"]["comment"]["thumbs_down"] == 2
     assert response["error"] == None

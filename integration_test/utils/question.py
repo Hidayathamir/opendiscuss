@@ -25,6 +25,12 @@ def get_question_detail(question_id):
     return requests.request("GET", url, headers={}, data={}).json()
 
 
+def get_question_list():
+    url = "http://localhost:8080/api/v1/questions"
+
+    return requests.request("GET", url, headers={}, data={}).json()
+
+
 def vote_question(jwt_token, question_id, voting: VoteOption):
     url = f"http://localhost:8080/api/v1/questions/{question_id}/{voting.value}"
 

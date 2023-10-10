@@ -16,5 +16,8 @@ func (cs *CommentService) GetCommentByID(ctx context.Context, ID int) (dto.Comme
 	if err != nil {
 		return dto.CommentHighlight{}, errors.Wrap(err, "error get comment")
 	}
+
+	comment.ThumbsRate = comment.ThumbsUp - comment.ThumbsDown
+
 	return comment, nil
 }

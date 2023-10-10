@@ -16,5 +16,8 @@ func (qs *QuestionService) GetQuestionByID(ctx context.Context, ID int) (dto.Que
 	if err != nil {
 		return dto.QuestionHighlight{}, errors.Wrap(err, "error get question")
 	}
+
+	question.ThumbsRate = question.ThumbsUp - question.ThumbsDown
+
 	return question, nil
 }

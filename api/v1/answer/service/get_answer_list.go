@@ -17,5 +17,9 @@ func (as *AnswerService) GetAnswerListByQuestionID(ctx context.Context, question
 		return nil, errors.New("error get answer list by question id")
 	}
 
+	for i := range answers {
+		answers[i].ThumbsRate = answers[i].ThumbsUp - answers[i].ThumbsDown
+	}
+
 	return answers, nil
 }
