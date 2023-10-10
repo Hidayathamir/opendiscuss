@@ -25,6 +25,7 @@ def test_success():
     assert response["data"]["answer"]["author"] == username
     assert response["data"]["answer"]["author_id"] == user_id
     assert response["data"]["answer"]["answer"] == answer
+    assert response["data"]["answer"]["thumbs_rate"] == 0
     assert response["data"]["answer"]["thumbs_up"] == 0
     assert response["data"]["answer"]["thumbs_down"] == 0
     assert response["error"] == None

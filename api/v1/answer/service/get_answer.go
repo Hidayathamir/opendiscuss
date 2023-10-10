@@ -17,5 +17,7 @@ func (as *AnswerService) GetAnswerByID(ctx context.Context, answerID int) (dto.A
 		return dto.AnswerHighligh{}, errors.Wrap(err, "error get answer by id")
 	}
 
+	answer.ThumbsRate = answer.ThumbsUp - answer.ThumbsDown
+
 	return answer, nil
 }

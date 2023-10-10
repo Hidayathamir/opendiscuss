@@ -12,5 +12,10 @@ func (qs *QuestionService) GetQuestionList(ctx context.Context) ([]dto.QuestionH
 	if err != nil {
 		return nil, errors.Wrap(err, "error get question list")
 	}
+
+	for _, question := range questions {
+		question.ThumbsRate = question.ThumbsUp - question.ThumbsDown
+	}
+
 	return questions, nil
 }

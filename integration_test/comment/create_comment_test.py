@@ -27,6 +27,7 @@ def test_success():
     assert response["data"]["comment"]["author"] == username
     assert response["data"]["comment"]["author_id"] == user_id
     assert response["data"]["comment"]["comment"] == comment
+    assert response["data"]["comment"]["thumbs_rate"] == 0
     assert response["data"]["comment"]["thumbs_up"] == 0
     assert response["data"]["comment"]["thumbs_down"] == 0
     assert response["error"] == None
