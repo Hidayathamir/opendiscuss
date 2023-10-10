@@ -22,6 +22,7 @@ type ICommentRepository interface {
 	DecrementCommentStatisticColumnThumbsUpByCommentID(ctx context.Context, commentID int) (int, error)
 	DecrementCommentStatisticColumnThumbsDownByCommentID(ctx context.Context, commentID int) (int, error)
 	UpdateCommentByID(ctx context.Context, req dto.ReqUpdateCommentByID) (int, error)
+	DeleteCommentByID(ctx context.Context, req dto.ReqDeleteCommentByID) (int, error)
 }
 
 type CommentRepository struct {
