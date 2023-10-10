@@ -46,12 +46,18 @@ func (ar *AnswerRepository) GetAnswerListByQuestionID(ctx context.Context, quest
 
 	questionIDEqualTo := fmt.Sprintf("%s = ?", model.ANSWER_QUESTION_ID)
 
+	byHighestVote := fmt.Sprintf(
+		"%s - %s desc",
+		model.ANSWER_STATISTIC_THUMBS_UP, model.ANSWER_STATISTIC_THUMBS_DOWN,
+	)
+
 	q := ar.getTrOrDB(ctx).
 		Select(querySelect).
 		Table(model.ANSWER_TABLE_NAME).
 		Joins(queryJoinUser).
 		Joins(queryJoinAnswerStatistic).
 		Where(questionIDEqualTo, questionID).
+		Order(byHighestVote).
 		Find(&answers)
 
 	if q.Error != nil {
