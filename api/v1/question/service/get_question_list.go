@@ -13,8 +13,8 @@ func (qs *QuestionService) GetQuestionList(ctx context.Context) ([]dto.QuestionH
 		return nil, errors.Wrap(err, "error get question list")
 	}
 
-	for _, question := range questions {
-		question.ThumbsRate = question.ThumbsUp - question.ThumbsDown
+	for i := range questions {
+		questions[i].ThumbsRate = questions[i].ThumbsUp - questions[i].ThumbsDown
 	}
 
 	return questions, nil

@@ -17,8 +17,8 @@ func (cs *CommentService) GetCommentListByAnswerID(ctx context.Context, answerID
 		return nil, errors.Wrap(err, "error get comment list by answer id")
 	}
 
-	for _, comment := range comments {
-		comment.ThumbsRate = comment.ThumbsUp - comment.ThumbsDown
+	for i := range comments {
+		comments[i].ThumbsRate = comments[i].ThumbsUp - comments[i].ThumbsDown
 	}
 
 	return comments, nil
@@ -34,8 +34,8 @@ func (cs *CommentService) GetSubCommentListByCommentID(ctx context.Context, comm
 		return nil, errors.Wrap(err, "error get sub comment list by comment id")
 	}
 
-	for _, subComment := range subComments {
-		subComment.ThumbsRate = subComment.ThumbsUp - subComment.ThumbsDown
+	for i := range subComments {
+		subComments[i].ThumbsRate = subComments[i].ThumbsUp - subComments[i].ThumbsDown
 	}
 
 	return subComments, nil
