@@ -12,6 +12,7 @@ type ICommentController interface {
 	VoteThumbsUp(ctx *gin.Context)
 	VoteThumbsDown(ctx *gin.Context)
 	UpdateCommentByID(ctx *gin.Context)
+	DeleteCommentByID(ctx *gin.Context)
 }
 
 type CommentController struct {
