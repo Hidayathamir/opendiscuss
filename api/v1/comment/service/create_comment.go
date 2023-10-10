@@ -31,6 +31,18 @@ func (cs *CommentService) CreateComment(ctx context.Context, req dto.ReqCreateCo
 			return errors.Wrap(err, "error create comment statistic")
 		}
 
+		isCreateSubComment := req.ParentCommentID != 0
+		if isCreateSubComment {
+			parentChildComment := model.ParentChildComment{
+				ParentCommentID: req.ParentCommentID,
+				ChildCommentID:  commentID,
+			}
+			_, err = cs.repo.CreateParentChildComment(ctx, parentChildComment)
+			if err != nil {
+				return errors.Wrap(err, "error create subcomment")
+			}
+		}
+
 		return nil
 	})
 
