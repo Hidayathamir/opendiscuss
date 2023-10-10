@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	answerrouter "github.com/Hidayathamir/opendiscuss/api/v1/answer/router"
+	commentrouter "github.com/Hidayathamir/opendiscuss/api/v1/comment/router"
 	questionrouter "github.com/Hidayathamir/opendiscuss/api/v1/question/router"
 	userrouter "github.com/Hidayathamir/opendiscuss/api/v1/user/router"
 	"github.com/Hidayathamir/opendiscuss/utils"
@@ -20,6 +21,7 @@ func AddRouter(db *gorm.DB, r *gin.Engine) {
 			questionrouter.AddQuestionRouter(db, v1)
 			userrouter.AddUserRouter(db, v1)
 			answerrouter.AddAnswerRouter(db, v1)
+			commentrouter.AddCommentRouter(db, v1)
 		}
 	}
 

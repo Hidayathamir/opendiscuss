@@ -1,4 +1,4 @@
-from utils import utils
+from integration_test import utils
 
 
 def test_success():

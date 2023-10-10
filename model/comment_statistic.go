@@ -10,3 +10,17 @@ type CommentStatistic struct {
 	CreatedAt  time.Time `gorm:"column:created_at"`
 	UpdatedAt  time.Time `gorm:"column:updated_at"`
 }
+
+func (CommentStatistic) TableName() string {
+	return "comment_statistics"
+}
+
+const (
+	COMMENT_STATISTIC_TABLE_NAME  = "comment_statistics"
+	COMMENT_STATISTIC_ID          = "comment_statistics.id"
+	COMMENT_STATISTIC_COMMENT_ID  = "comment_statistics.comment_id"
+	COMMENT_STATISTIC_THUMBS_UP   = "comment_statistics.thumbs_up"
+	COMMENT_STATISTIC_THUMBS_DOWN = "comment_statistics.thumbs_down"
+	COMMENT_STATISTIC_CREATED_AT  = "comment_statistics.created_at"
+	COMMENT_STATISTIC_UPDATED_AT  = "comment_statistics.updated_at"
+)
