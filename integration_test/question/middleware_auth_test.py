@@ -1,6 +1,6 @@
 import requests
 import json
-from utils import utils
+from integration_test import utils
 
 
 def test_error_no_jwt_token():
