@@ -58,6 +58,11 @@ func (cr *CommentRepository) GetCommentListByAnswerID(ctx context.Context, answe
 		"%s is null", model.PARENT_CHILD_COMMENT_ID,
 	)
 
+	byHighestVote := fmt.Sprintf(
+		"%s - %s desc",
+		model.COMMENT_STATISTIC_THUMBS_UP, model.COMMENT_STATISTIC_THUMBS_DOWN,
+	)
+
 	q := cr.getTrOrDB(ctx).Select(querySelect).
 		Table(model.COMMENT_TABLE_NAME).
 		Joins(queryJoinUser).
@@ -65,6 +70,7 @@ func (cr *CommentRepository) GetCommentListByAnswerID(ctx context.Context, answe
 		Joins(queryJoinParentChildComment).
 		Where(answerIDEqualTo, answerID).
 		Where(parentChildCommentIDIsNull).
+		Order(byHighestVote).
 		Find(&Comments)
 
 	if q.Error != nil {
@@ -119,12 +125,18 @@ func (cr *CommentRepository) GetSubCommentListByCommentID(ctx context.Context, c
 
 	parentCommentIDEqualTo := fmt.Sprintf("%s = ?", model.PARENT_CHILD_COMMENT_PARENT_COMMENT_ID)
 
+	byHighestVote := fmt.Sprintf(
+		"%s - %s desc",
+		model.COMMENT_STATISTIC_THUMBS_UP, model.COMMENT_STATISTIC_THUMBS_DOWN,
+	)
+
 	q := cr.getTrOrDB(ctx).Select(querySelect).
 		Table(model.COMMENT_TABLE_NAME).
 		Joins(queryJoinUser).
 		Joins(queryJoinCommentStatistic).
 		Joins(queryJoinParentChildComment).
 		Where(parentCommentIDEqualTo, commentID).
+		Order(byHighestVote).
 		Find(&subComments)
 
 	if q.Error != nil {

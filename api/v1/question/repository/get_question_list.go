@@ -45,6 +45,7 @@ func (qr *QuestionRepository) GetQuestionList(ctx context.Context) ([]dto.Questi
 		Table(model.QUESTION_TABLE_NAME).
 		Joins(queryJoinUser).
 		Joins(queryJoinQuestionStatistic).
+		Order("created_at desc").
 		Find(&questions)
 
 	if q.Error != nil {
