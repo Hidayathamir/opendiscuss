@@ -7,7 +7,7 @@ community platform
 - [x] user can register
 - [x] user can login
 - [x] user can ask question
-- [x] user can see question, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count
+- [x] user can see question, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by latest question first
 - [x] user can vote thumbsup | thumbsdown question
 - [x] user can edit (only) their question
 - [x] user can delete (only) their question
