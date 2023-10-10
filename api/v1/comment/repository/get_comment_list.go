@@ -2,13 +2,18 @@ package repository
 
 import (
 	"context"
+	"errors"
 	"fmt"
 
 	"github.com/Hidayathamir/opendiscuss/api/v1/comment/dto"
 	"github.com/Hidayathamir/opendiscuss/model"
 )
 
-func (cr *CommentRepository) GetCommentList(ctx context.Context) ([]dto.CommentHighlight, error) {
+func (cr *CommentRepository) GetCommentListByAnswerID(ctx context.Context, answerID int) ([]dto.CommentHighlight, error) {
+	if answerID == 0 {
+		return nil, errors.New("answer id can not be empty")
+	}
+
 	Comments := []dto.CommentHighlight{}
 
 	querySelect := `
@@ -41,10 +46,13 @@ func (cr *CommentRepository) GetCommentList(ctx context.Context) ([]dto.CommentH
 		model.COMMENT_STATISTIC_COMMENT_ID,
 	)
 
+	answerIDEqualTo := fmt.Sprintf("%s = ?", model.COMMENT_ANSWER_ID)
+
 	q := cr.getTrOrDB(ctx).Select(querySelect).
 		Table(model.COMMENT_TABLE_NAME).
 		Joins(queryJoinUser).
 		Joins(queryJoinCommentStatistic).
+		Where(answerIDEqualTo, answerID).
 		Find(&Comments)
 
 	if q.Error != nil {

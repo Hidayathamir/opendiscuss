@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/Hidayathamir/opendiscuss/api/v1/comment/dto"
 	"github.com/Hidayathamir/opendiscuss/constant"
@@ -20,6 +21,15 @@ func (cc *CommentController) CreateComment(ctx *gin.Context) {
 	}
 
 	req.UserID = ctx.GetInt(constant.CTX_USER_ID)
+
+	answerID, err := strconv.Atoi(ctx.Param("answerid"))
+	if err != nil {
+		err = errors.Wrap(err, "error convert question id")
+		utils.WriteResponse(ctx, http.StatusBadRequest, nil, err)
+		return
+	}
+
+	req.AnswerID = answerID
 
 	commentID, err := cc.service.CreateComment(ctx, req)
 	if err != nil {

@@ -9,9 +9,9 @@ import (
 	"github.com/Hidayathamir/opendiscuss/model"
 )
 
-func (cr *CommentRepository) GetCommentByID(ctx context.Context, ID int) (dto.CommentHighlight, error) {
-	if ID == 0 {
-		return dto.CommentHighlight{}, errors.New("id can not be empty")
+func (cr *CommentRepository) GetCommentByID(ctx context.Context, commentID int) (dto.CommentHighlight, error) {
+	if commentID == 0 {
+		return dto.CommentHighlight{}, errors.New("comment id can not be empty")
 	}
 
 	comment := dto.CommentHighlight{}
@@ -52,7 +52,7 @@ func (cr *CommentRepository) GetCommentByID(ctx context.Context, ID int) (dto.Co
 		Table(model.COMMENT_TABLE_NAME).
 		Joins(queryJoinUser).
 		Joins(queryJoinCommentStatistic).
-		Where(model.COMMENT_ID, ID).
+		Where(model.COMMENT_ID, commentID).
 		First(&comment)
 
 	if q.Error != nil {

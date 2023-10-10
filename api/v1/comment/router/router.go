@@ -13,8 +13,8 @@ import (
 func AddCommentRouter(db *gorm.DB, r *gin.RouterGroup) {
 	cc := getCommentController(db)
 
-	r.POST("/comments", middleware.Authenticate, cc.CreateComment)
-	r.GET("/comments", cc.GetCommentList)
+	r.POST("/answers/:answerid/comments", middleware.Authenticate, cc.CreateComment)
+	r.GET("/answers/:answerid/comments", cc.GetCommentListByAnswerID)
 	r.GET("/comments/:commentid", cc.GetCommentByID)
 }
 

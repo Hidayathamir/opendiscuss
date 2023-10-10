@@ -7,7 +7,7 @@ import (
 
 type ICommentController interface {
 	CreateComment(ctx *gin.Context)
-	GetCommentList(ctx *gin.Context)
+	GetCommentListByAnswerID(ctx *gin.Context)
 	GetCommentByID(ctx *gin.Context)
 }
 

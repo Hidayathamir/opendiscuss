@@ -13,7 +13,7 @@ type ICommentRepository interface {
 	CreateComment(ctx context.Context, comment model.Comment) (int, error)
 	CreateCommentStatistic(ctx context.Context, commentStatistic model.CommentStatistic) (int, error)
 	GetCommentByID(ctx context.Context, ID int) (dto.CommentHighlight, error)
-	GetCommentList(ctx context.Context) ([]dto.CommentHighlight, error)
+	GetCommentListByAnswerID(ctx context.Context, answerID int) ([]dto.CommentHighlight, error)
 }
 
 type CommentRepository struct {

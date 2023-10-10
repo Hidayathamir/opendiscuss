@@ -7,20 +7,25 @@ import (
 )
 
 type ReqCreateComment struct {
-	UserID  int    `json:"-"`
-	Comment string `json:"comment"`
+	UserID   int    `json:"-"`
+	AnswerID int    `json:"-"`
+	Comment  string `json:"comment"`
 }
 
 func (r ReqCreateComment) ToModelComment() model.Comment {
 	return model.Comment{
-		UserID: r.UserID,
-		Body:   r.Comment,
+		UserID:   r.UserID,
+		AnswerID: r.AnswerID,
+		Body:     r.Comment,
 	}
 }
 
 func (r ReqCreateComment) Validate() error {
 	if r.UserID == 0 {
 		return errors.New("user_id can not be empty")
+	}
+	if r.AnswerID == 0 {
+		return errors.New("answer id can not be empty")
 	}
 	if r.Comment == "" {
 		return errors.New("comment can not be empty")
@@ -29,5 +34,5 @@ func (r ReqCreateComment) Validate() error {
 }
 
 type ResCreateComment struct {
-	CommentID int `json:"Comment_id"`
+	CommentID int `json:"comment_id"`
 }
