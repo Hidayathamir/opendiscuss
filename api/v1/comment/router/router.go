@@ -16,6 +16,8 @@ func AddCommentRouter(db *gorm.DB, r *gin.RouterGroup) {
 	r.POST("/answers/:answerid/comments", middleware.Authenticate, cc.CreateComment)
 	r.GET("/answers/:answerid/comments", cc.GetCommentListByAnswerID)
 	r.GET("/comments/:commentid", cc.GetCommentByID)
+	r.POST("/comments/:commentid/thumbsup", middleware.Authenticate, cc.VoteThumbsUp)
+	r.POST("/comments/:commentid/thumbsdown", middleware.Authenticate, cc.VoteThumbsDown)
 }
 
 func getCommentController(db *gorm.DB) controller.ICommentController {
