@@ -7,9 +7,10 @@ import (
 )
 
 type ReqCreateComment struct {
-	UserID   int    `json:"-"`
-	AnswerID int    `json:"-"`
-	Comment  string `json:"comment"`
+	UserID          int    `json:"-"`
+	AnswerID        int    `json:"-"`
+	Comment         string `json:"comment"`
+	ParentCommentID int    `json:"parent_comment_id"`
 }
 
 func (r ReqCreateComment) ToModelComment() model.Comment {

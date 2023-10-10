@@ -18,3 +18,16 @@ func (cs *CommentService) GetCommentListByAnswerID(ctx context.Context, answerID
 	}
 	return comments, nil
 }
+
+func (cs *CommentService) GetSubCommentListByCommentID(ctx context.Context, commentID int) ([]dto.CommentHighlight, error) {
+	if commentID == 0 {
+		return nil, errors.New("comment id can not be empty")
+	}
+
+	subComments, err := cs.repo.GetSubCommentListByCommentID(ctx, commentID)
+	if err != nil {
+		return nil, errors.Wrap(err, "error get sub comment list by comment id")
+	}
+
+	return subComments, nil
+}

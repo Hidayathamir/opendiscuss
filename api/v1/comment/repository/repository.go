@@ -23,6 +23,8 @@ type ICommentRepository interface {
 	DecrementCommentStatisticColumnThumbsDownByCommentID(ctx context.Context, commentID int) (int, error)
 	UpdateCommentByID(ctx context.Context, req dto.ReqUpdateCommentByID) (int, error)
 	DeleteCommentByID(ctx context.Context, req dto.ReqDeleteCommentByID) (int, error)
+	CreateParentChildComment(ctx context.Context, parentChildComment model.ParentChildComment) (int, error)
+	GetSubCommentListByCommentID(ctx context.Context, commentID int) ([]dto.CommentHighlight, error)
 }
 
 type CommentRepository struct {

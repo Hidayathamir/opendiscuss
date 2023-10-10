@@ -561,6 +561,44 @@
 							"response": []
 						},
 						{
+							"name": "CreateComment (subcomment)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"comment\": \"what do you mean by AI?\",\n    \"parent_comment_id\": 87\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/answers/151/comments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"answers",
+										"151",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "GetCommentByID",
 							"request": {
 								"method": "GET",
@@ -600,6 +638,29 @@
 										"answers",
 										"1",
 										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetSubCommentListByCommentID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/comments/87/subcomments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"comments",
+										"87",
+										"subcomments"
 									]
 								}
 							},
