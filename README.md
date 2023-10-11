@@ -8,9 +8,7 @@ You can see user story in file [README-user-story.md](https://github.com/Hidayat
 
 ## entiry relationship diagram
 
-https://dbdiagram.io/d/opendiscuss-erd-64e854c002bd1c4a5e6392d5
-
-https://dbdocs.io/hidayathamir/opendiscuss
+You can see ERD in [dbdiagram](https://dbdiagram.io/d/opendiscuss-erd-64e854c002bd1c4a5e6392d5) and [dbdocs](https://dbdocs.io/hidayathamir/opendiscuss).
 
 ## quick start
 
