@@ -4,11 +4,13 @@ Opendiscuss is a community platform where people contribute to discuss various t
 
 ## User Stories
 
-You can find user stories in the file [README-user-story.md](https://github.com/Hidayathamir/opendiscuss/blob/master/README-user-story.md).
+You can find user stories in the file [README-user-story.md](README-user-story.md).
 
 ## Entiry Relationship Diagram
 
 You can view the ERD on [dbdiagram](https://dbdiagram.io/d/opendiscuss-erd-64e854c002bd1c4a5e6392d5) and [dbdocs](https://dbdocs.io/hidayathamir/opendiscuss).
+
+![erd](README_asset/erd.png)
 
 ## Quick Start
 
@@ -20,8 +22,8 @@ You can view the ERD on [dbdiagram](https://dbdiagram.io/d/opendiscuss-erd-64e85
 sudo docker compose up
 ```
 
-To view MySQL credentials, you can refer to the [docker-compose.yml](https://github.com/Hidayathamir/opendiscuss/blob/master/docker-compose.yml) file.
+To view MySQL credentials, you can refer to the [docker-compose.yml](docker-compose.yml) file.
 
 ## API Documentation
 
-For API documentation, you can import the file [postman/opendiscuss.postman_collection.json](https://github.com/Hidayathamir/opendiscuss/blob/master/postman/opendiscuss.postman_collection.json) into your Postman.
+For API documentation, you can import the file [postman/opendiscuss.postman_collection.json](postman/opendiscuss.postman_collection.json) into your Postman.
