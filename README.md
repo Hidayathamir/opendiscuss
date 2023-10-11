@@ -1,31 +1,10 @@
 # opendiscuss
 
-community platform
+community platform where people contribute to discuss some topic.
 
 ## user stories
 
-- [x] user can register
-- [x] user can login
-- [x] user can ask question
-- [x] user can see question, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by latest question first
-- [x] user can vote thumbsup | thumbsdown question
-- [x] user can edit (only) their question
-- [x] user can delete (only) their question
-- [x] user can answer question
-- [x] user can see answer, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by highest thumbsup-thumbsdown count.
-- [x] user can vote thumbsup | thumbsdown answer
-- [x] user can edit (only) their answer
-- [x] user can delete (only) their answer
-- [x] user can comment on answer
-- [x] user can see comment, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by highest thumbsup-thumbsdown count.
-- [x] user can vote thumbsup | thumbsdown comment
-- [x] user can edit (only) their comment
-- [x] user can delete (only) their comment
-- [x] user can comment on comment (subcomment)
-- [x] user can see subcomment, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by highest thumbsup-thumbsdown count.
-- [x] user can vote thumbsup | thumbsdown subcomment
-- [x] user can edit (only) their subcomment
-- [x] user can delete (only) their subcomment
+You can see user story in file [README-user-story.md](https://github.com/Hidayathamir/opendiscuss/blob/master/README-user-story.md).
 
 ## entiry relationship diagram
 
