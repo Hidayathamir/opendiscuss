@@ -1,6 +1,6 @@
 # opendiscuss
 
-community platform where people contribute to discuss some topic.
+opendiscuss is community platform where people contribute to discuss some topic.
 
 ## user stories
 
