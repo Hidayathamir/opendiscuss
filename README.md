@@ -1,33 +1,27 @@
 # opendiscuss
 
-opendiscuss is community platform where people contribute to discuss some topic.
+Opendiscuss is a community platform where people contribute to discuss various topics.
 
-## user stories
+## User Stories
 
-You can see user story in file [README-user-story.md](https://github.com/Hidayathamir/opendiscuss/blob/master/README-user-story.md).
+You can find user stories in the file [README-user-story.md](https://github.com/Hidayathamir/opendiscuss/blob/master/README-user-story.md).
 
-## entiry relationship diagram
+## Entiry Relationship Diagram
 
-You can see ERD in [dbdiagram](https://dbdiagram.io/d/opendiscuss-erd-64e854c002bd1c4a5e6392d5) and [dbdocs](https://dbdocs.io/hidayathamir/opendiscuss).
+You can view the ERD on [dbdiagram](https://dbdiagram.io/d/opendiscuss-erd-64e854c002bd1c4a5e6392d5) and [dbdocs](https://dbdocs.io/hidayathamir/opendiscuss).
 
-## quick start
+## Quick Start
 
-1. run mysql db using docker compose
+1. Rename `.env-example` to `.env`.
 
-```
+2. Run the MySQL database and the Go app using Docker Compose:
+
+```shell
 sudo docker compose up
 ```
 
-to see mysql credential you can check file `docker-compose.yml`
+To view MySQL credentials, you can refer to the [docker-compose.yml](https://github.com/Hidayathamir/opendiscuss/blob/master/docker-compose.yml) file.
 
-2. rename `.env-example` to `.env`
+## API Documentation
 
-3. run golang
-
-```
-go run .
-```
-
-## api documentation
-
-for api documentation, you can import file `postman/opendiscuss.postman_collection.json` into your postman.
+For API documentation, you can import the file [postman/opendiscuss.postman_collection.json](https://github.com/Hidayathamir/opendiscuss/blob/master/postman/opendiscuss.postman_collection.json) into your Postman.
