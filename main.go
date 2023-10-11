@@ -1,12 +1,16 @@
 package main
 
 import (
+	"log"
+	"time"
+
 	"github.com/Hidayathamir/opendiscuss/environtment"
 	"github.com/Hidayathamir/opendiscuss/router"
 	"github.com/Hidayathamir/opendiscuss/utils"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/pkg/errors"
+	"gorm.io/gorm"
 )
 
 func main() {
@@ -18,9 +22,18 @@ func main() {
 		panic(errors.Wrap(err, "error init environtment"))
 	}
 
-	db, err := utils.GetDBConnection()
-	if err != nil {
-		panic(errors.Wrap(err, "error get db connection"))
+	var db *gorm.DB
+	var err error
+	for {
+		db, err = utils.GetDBConnection()
+		if err == nil {
+			break
+		}
+
+		err = errors.Wrap(err, "error get db connection, waiting 5s before connect again")
+		log.Println(err)
+
+		time.Sleep(5 * time.Second)
 	}
 
 	r := gin.Default()
