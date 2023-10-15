@@ -7,6 +7,7 @@ import (
 	"github.com/Hidayathamir/opendiscuss/environtment"
 	"github.com/Hidayathamir/opendiscuss/router"
 	"github.com/Hidayathamir/opendiscuss/utils"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/pkg/errors"
@@ -37,6 +38,7 @@ func main() {
 	}
 
 	r := gin.Default()
+	r.Use(cors.Default())
 	router.AddRouter(db, r)
 	if err := r.Run(); err != nil {
 		panic(errors.Wrap(err, "error gin router run"))
