@@ -6,7 +6,9 @@ def test_success():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "dummy question")
+    question_id = utils.create_question_get_id(
+        jwt_token, "dummy title", "dummy question"
+    )
     answer_id = utils.create_answer_get_id(jwt_token, question_id, "dummy answer")
 
     response = utils.delete_answer(jwt_token, answer_id)
@@ -40,7 +42,9 @@ def test_error_delete_other_user_answer():
     usera_password = utils.generate_string()
     utils.register_user(usera_username, usera_password)
     usera_jwt_token = utils.login_user_get_token(usera_username, usera_password)
-    usera_question_id = utils.create_question_get_id(usera_jwt_token, "dummy question")
+    usera_question_id = utils.create_question_get_id(
+        usera_jwt_token, "dummy title", "dummy question"
+    )
     usera_answer_id = utils.create_answer_get_id(
         usera_jwt_token, usera_question_id, "dummy answer"
     )

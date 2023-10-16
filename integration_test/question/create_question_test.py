@@ -6,9 +6,10 @@ def test_success():
     password = "dummy password"
     user_id = utils.register_user_get_id(username, password)
     jwt_token = utils.login_user_get_token(username, password)
+    title = "ask about promise"
     question = "what is promise?"
 
-    response = utils.create_question(jwt_token, question)
+    response = utils.create_question(jwt_token, title, question)
 
     assert response["data"] != None
     assert response["data"]["question_id"] != 0
@@ -20,8 +21,10 @@ def test_success():
     assert response["data"] != None
     assert response["data"]["question"]["author"] == username
     assert response["data"]["question"]["author_id"] == user_id
+    assert response["data"]["question"]["title"] == title
     assert response["data"]["question"]["question"] == question
     assert response["data"]["question"]["thumbs_rate"] == 0
     assert response["data"]["question"]["thumbs_up"] == 0
     assert response["data"]["question"]["thumbs_down"] == 0
+    assert response["data"]["question"]["answer_count"] == 0
     assert response["error"] == None

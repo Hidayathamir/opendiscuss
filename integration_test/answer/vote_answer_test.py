@@ -6,7 +6,8 @@ def test_vote_thumbs_up():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "who are you?")
+    title = "dummy title"
+    question_id = utils.create_question_get_id(jwt_token, title, "who are you?")
     answer = "i am hidayat"
     answer_id = utils.create_answer_get_id(jwt_token, question_id, answer)
 
@@ -33,7 +34,8 @@ def test_vote_thumbs_down():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "who are you?")
+    title = "dummy title"
+    question_id = utils.create_question_get_id(jwt_token, title, "who are you?")
     answer = "i am hidayat"
     answer_id = utils.create_answer_get_id(jwt_token, question_id, answer)
 
@@ -60,7 +62,8 @@ def test_vote_thumbs_up_then_thumbs_up():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "who are you?")
+    title = "dummy title"
+    question_id = utils.create_question_get_id(jwt_token, title, "who are you?")
     answer = "i am hidayat"
     answer_id = utils.create_answer_get_id(jwt_token, question_id, answer)
 
@@ -104,7 +107,8 @@ def test_vote_thumbs_up_then_thumbs_down():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "who are you?")
+    title = "dummy title"
+    question_id = utils.create_question_get_id(jwt_token, title, "who are you?")
     answer = "i am hidayat"
     answer_id = utils.create_answer_get_id(jwt_token, question_id, answer)
 
@@ -148,7 +152,8 @@ def test_vote_thumbs_down_then_thumbs_up():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "who are you?")
+    title = "dummy title"
+    question_id = utils.create_question_get_id(jwt_token, title, "who are you?")
     answer = "i am hidayat"
     answer_id = utils.create_answer_get_id(jwt_token, question_id, answer)
 
@@ -192,7 +197,8 @@ def test_vote_thumbs_down_then_thumbs_down():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "who are you?")
+    title = "dummy title"
+    question_id = utils.create_question_get_id(jwt_token, title, "who are you?")
     answer = "i am hidayat"
     answer_id = utils.create_answer_get_id(jwt_token, question_id, answer)
 
@@ -236,7 +242,10 @@ def test_usera_thumbs_up_userb_thumbs_up():
     usera_password = utils.generate_string()
     utils.register_user(usera_username, usera_password)
     usera_jwt_token = utils.login_user_get_token(usera_username, usera_password)
-    usera_question_id = utils.create_question_get_id(usera_jwt_token, "who are you?")
+    title = "dummy title"
+    usera_question_id = utils.create_question_get_id(
+        usera_jwt_token, title, "who are you?"
+    )
     usera_answer = "i am hidayat"
     usera_answer_id = utils.create_answer_get_id(
         usera_jwt_token, usera_question_id, usera_answer
@@ -291,7 +300,10 @@ def test_usera_thumbs_up_userb_thumbs_down():
     usera_password = utils.generate_string()
     utils.register_user(usera_username, usera_password)
     usera_jwt_token = utils.login_user_get_token(usera_username, usera_password)
-    usera_question_id = utils.create_question_get_id(usera_jwt_token, "who are you?")
+    title = "dummy title"
+    usera_question_id = utils.create_question_get_id(
+        usera_jwt_token, title, "who are you?"
+    )
     usera_answer = "i am hidayat"
     usera_answer_id = utils.create_answer_get_id(
         usera_jwt_token, usera_question_id, usera_answer
@@ -346,7 +358,10 @@ def test_usera_thumbs_down_userb_thumbs_down():
     usera_password = utils.generate_string()
     utils.register_user(usera_username, usera_password)
     usera_jwt_token = utils.login_user_get_token(usera_username, usera_password)
-    usera_question_id = utils.create_question_get_id(usera_jwt_token, "who are you?")
+    title = "dummy title"
+    usera_question_id = utils.create_question_get_id(
+        usera_jwt_token, title, "who are you?"
+    )
     usera_answer = "i am hidayat"
     usera_answer_id = utils.create_answer_get_id(
         usera_jwt_token, usera_question_id, usera_answer

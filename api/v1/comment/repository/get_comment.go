@@ -23,6 +23,7 @@ func (cr *CommentRepository) GetCommentByID(ctx context.Context, commentID int) 
 		%s as comment, 
 		%s, 
 		%s, 
+		%s, 
 		%s,
 		%s
 	`
@@ -30,6 +31,7 @@ func (cr *CommentRepository) GetCommentByID(ctx context.Context, commentID int) 
 		querySelect,
 		model.COMMENT_ID, model.USER_USERNAME, model.USER_ID, model.COMMENT_BODY,
 		model.COMMENT_STATISTIC_THUMBS_UP, model.COMMENT_STATISTIC_THUMBS_DOWN,
+		model.COMMENT_STATISTIC_COMMENT_COUNT,
 		model.COMMENT_CREATED_AT, model.COMMENT_UPDATED_AT,
 	)
 

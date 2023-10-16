@@ -19,9 +19,10 @@ def test_error_no_jwt_token():
 
 def test_error_jwt_token_invalid():
     jwt_token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTY5MzIwNjksInVsZXJfaWQiOiIyInd.K1sEDl8Ke7VdYszxZd6ODH6DVZU7L4jTYs5GgeyIXIU"
+    title = "ask about promise"
     question = "what is promise?"
 
-    response = utils.create_question(jwt_token, question)
+    response = utils.create_question(jwt_token, title, question)
 
     assert response["data"] == None
     assert response["error"] != None

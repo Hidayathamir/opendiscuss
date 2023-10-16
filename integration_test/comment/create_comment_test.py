@@ -6,7 +6,9 @@ def test_success():
     password = utils.generate_string()
     user_id = utils.register_user_get_id(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "what is software engineer?")
+    question_id = utils.create_question_get_id(
+        jwt_token, "ask about software engineer", "what is software engineer?"
+    )
     answer_id = utils.create_answer_get_id(
         jwt_token, question_id, "software engineer is programmer"
     )
@@ -30,6 +32,7 @@ def test_success():
     assert response["data"]["comment"]["thumbs_rate"] == 0
     assert response["data"]["comment"]["thumbs_up"] == 0
     assert response["data"]["comment"]["thumbs_down"] == 0
+    assert response["data"]["comment"]["comment_count"] == 0
     assert response["error"] == None
 
     response = utils.get_comment_list_by_answer_id(answer_id)
