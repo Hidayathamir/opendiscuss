@@ -24,12 +24,14 @@ func (cr *CommentRepository) GetCommentListByAnswerID(ctx context.Context, answe
 		%s, 
 		%s, 
 		%s,
+		%s,
 		%s
 	`
 	querySelect = fmt.Sprintf(
 		querySelect,
 		model.COMMENT_ID, model.USER_USERNAME, model.USER_ID, model.COMMENT_BODY,
 		model.COMMENT_STATISTIC_THUMBS_UP, model.COMMENT_STATISTIC_THUMBS_DOWN,
+		model.COMMENT_STATISTIC_COMMENT_COUNT,
 		model.COMMENT_CREATED_AT, model.COMMENT_UPDATED_AT,
 	)
 

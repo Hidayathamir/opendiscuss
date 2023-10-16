@@ -24,12 +24,14 @@ func (ar *AnswerRepository) GetAnswerByID(ctx context.Context, answerID int) (dt
 		%s,
 		%s,
 		%s,
+		%s,
 		%s
 	`
 	querySelect = fmt.Sprintf(
 		querySelect,
 		model.ANSWER_ID, model.USER_USERNAME, model.USER_ID, model.ANSWER_BODY,
 		model.ANSWER_STATISTIC_THUMBS_UP, model.ANSWER_STATISTIC_THUMBS_DOWN,
+		model.ANSWER_STATISTIC_COMMENT_COUNT,
 		model.ANSWER_CREATED_AT, model.ANSWER_UPDATED_AT,
 	)
 

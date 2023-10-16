@@ -28,6 +28,7 @@ def test_success():
     assert response["data"]["answer"]["thumbs_rate"] == 0
     assert response["data"]["answer"]["thumbs_up"] == 0
     assert response["data"]["answer"]["thumbs_down"] == 0
+    assert response["data"]["answer"]["comment_count"] == 0
     assert response["error"] == None
 
     response = utils.get_answer_list_by_question_id(question_id)

@@ -33,7 +33,7 @@ curl --location 'http://localhost:8080/api/v1/questions' \
 }'
 ```
 
-- [x] user can see question, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by latest question first
+- [x] user can see question, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count, answer count. Should be sorted by latest question first
 
 ```shell
 curl --location 'http://localhost:8080/api/v1/questions'
@@ -85,7 +85,7 @@ curl --location 'http://localhost:8080/api/v1/questions/{{question_id}}/answers'
 }'
 ```
 
-- [x] user can see answer, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by highest thumbsup-thumbsdown count.
+- [x] user can see answer, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count, comment count. Should be sorted by highest thumbsup-thumbsdown count.
 
 ```shell
 curl --location 'http://localhost:8080/api/v1/questions/{{question_id}}/answers'
@@ -137,7 +137,7 @@ curl --location 'http://localhost:8080/api/v1/answers/{{answer_id}}/comments' \
 }'
 ```
 
-- [x] user can see comment, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by highest thumbsup-thumbsdown count.
+- [x] user can see comment, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count, subcomment count. Should be sorted by highest thumbsup-thumbsdown count.
 
 ```shell
 curl --location 'http://localhost:8080/api/v1/answers/{{answer_id}}/comments'
@@ -190,7 +190,7 @@ curl --location 'http://localhost:8080/api/v1/answers/{{answer_id}}/comments' \
 }'
 ```
 
-- [x] user can see subcomment, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count. Should be sorted by highest thumbsup-thumbsdown count.
+- [x] user can see subcomment, with thumbsup-thumbsdown count, thumbsup count, thumbsdown count, subcomment count. Should be sorted by highest thumbsup-thumbsdown count.
 
 ```shell
 curl --location 'http://localhost:8080/api/v1/comments/{{comment_id}}/subcomments'

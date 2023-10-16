@@ -32,6 +32,7 @@ def test_success_create_subcomment_of_comment():
     assert response["data"]["comment"]["thumbs_rate"] == 0
     assert response["data"]["comment"]["thumbs_up"] == 0
     assert response["data"]["comment"]["thumbs_down"] == 0
+    assert response["data"]["comment"]["comment_count"] == 0
     assert response["error"] == None
 
     response = utils.get_subcomment_list_by_comment_id(comment_id)

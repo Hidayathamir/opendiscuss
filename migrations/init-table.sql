@@ -35,6 +35,7 @@ CREATE TABLE `question_statistics` (
   `question_id` int UNIQUE NOT NULL,
   `thumbs_up` int NOT NULL,
   `thumbs_down` int NOT NULL,
+  `answer_count` int NOT NULL,
   `created_at` datetime NOT NULL DEFAULT (now()),
   `updated_at` datetime NOT NULL DEFAULT (now())
 );
@@ -62,6 +63,7 @@ CREATE TABLE `answer_statistics` (
   `answer_id` int UNIQUE NOT NULL,
   `thumbs_up` int NOT NULL,
   `thumbs_down` int NOT NULL,
+  `comment_count` int NOT NULL,
   `created_at` datetime NOT NULL DEFAULT (now()),
   `updated_at` datetime NOT NULL DEFAULT (now())
 );
@@ -89,6 +91,7 @@ CREATE TABLE `comment_statistics` (
   `comment_id` int UNIQUE NOT NULL,
   `thumbs_up` int NOT NULL,
   `thumbs_down` int NOT NULL,
+  `comment_count` int NOT NULL,
   `created_at` datetime NOT NULL DEFAULT (now()),
   `updated_at` datetime NOT NULL DEFAULT (now())
 );

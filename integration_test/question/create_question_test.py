@@ -24,4 +24,5 @@ def test_success():
     assert response["data"]["question"]["thumbs_rate"] == 0
     assert response["data"]["question"]["thumbs_up"] == 0
     assert response["data"]["question"]["thumbs_down"] == 0
+    assert response["data"]["question"]["answer_count"] == 0
     assert response["error"] == None
