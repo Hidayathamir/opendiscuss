@@ -29,6 +29,7 @@ curl --location 'http://localhost:8080/api/v1/questions' \
 --header 'Authorization: Bearer {{jwt-token}}' \
 --header 'Content-Type: application/json' \
 --data '{
+    "title": "Luhut dan Jokowi",
     "question": "Mengapa Luhut diberi banyak jabatan oleh Presiden Joko Widodo?"
 }'
 ```
@@ -62,6 +63,7 @@ curl --location --request PUT 'http://localhost:8080/api/v1/questions/{{question
 --header 'Authorization: Bearer {{jwt-token}}' \
 --header 'Content-Type: application/json' \
 --data '{
+    "title": "update title",
     "question": "update question"
 }
 '

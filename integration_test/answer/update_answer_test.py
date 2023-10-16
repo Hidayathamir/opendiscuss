@@ -6,7 +6,9 @@ def test_success():
     password = utils.generate_string()
     user_id = utils.register_user_get_id(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "what is SOLID?")
+    question_id = utils.create_question_get_id(
+        jwt_token, "ask aboud SOLID", "what is SOLID?"
+    )
     answer = "SOLID is principle to achieve clean code"
     answer_id = utils.create_answer_get_id(jwt_token, question_id, answer)
 
@@ -32,7 +34,9 @@ def test_error_update_other_user_answer():
     usera_password = utils.generate_string()
     usera_user_id = utils.register_user_get_id(usera_username, usera_password)
     usera_jwt_token = utils.login_user_get_token(usera_username, usera_password)
-    usera_question_id = utils.create_question_get_id(usera_jwt_token, "what is SOLID?")
+    usera_question_id = utils.create_question_get_id(
+        usera_jwt_token, "ask about SOLID", "what is SOLID?"
+    )
     usera_answer = "SOLID is principle to achieve clean code"
     usera_answer_id = utils.create_answer_get_id(
         usera_jwt_token, usera_question_id, usera_answer

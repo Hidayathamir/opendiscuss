@@ -6,8 +6,9 @@ def test_success():
     password = utils.generate_string()
     user_id = utils.register_user_get_id(username, password)
     jwt_token = utils.login_user_get_token(username, password)
+    title = "ask about software engineer"
     question = "what is software engineer?"
-    question_id = utils.create_question_get_id(jwt_token, question)
+    question_id = utils.create_question_get_id(jwt_token, title, question)
 
     answer = "software engineer is programmer"
     response = utils.create_answer(jwt_token, question_id, answer)

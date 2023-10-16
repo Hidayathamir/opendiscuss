@@ -20,7 +20,9 @@ def test_should_only_get_root_comment_of_answer():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "what is software engineer?")
+    question_id = utils.create_question_get_id(
+        jwt_token, "ask about software engineer", "what is software engineer?"
+    )
     answer_id = utils.create_answer_get_id(
         jwt_token, question_id, "software engineer is programmer"
     )
@@ -42,7 +44,9 @@ def test_should_sorted_by_thumbs_rate_desc():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "what is software engineer?")
+    question_id = utils.create_question_get_id(
+        jwt_token, "ask about software engineer", "what is software engineer?"
+    )
     answer_id = utils.create_answer_get_id(jwt_token, question_id, "idk")
 
     comment_id1 = utils.create_comment_get_id(jwt_token, answer_id, "hmm")

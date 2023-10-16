@@ -17,7 +17,10 @@ func (qr *QuestionRepository) UpdateQuestionByID(ctx context.Context, req dto.Re
 	q := qr.getTrOrDB(ctx).
 		Table(model.QUESTION_TABLE_NAME).
 		Where(idEqualTo, req.QuestionID).
-		Update(model.QUESTION_BODY, req.Question)
+		Updates(model.Question{
+			Title: req.Title,
+			Body:  req.Question,
+		})
 
 	if q.Error != nil {
 		return 0, q.Error

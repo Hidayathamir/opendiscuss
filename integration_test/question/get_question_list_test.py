@@ -16,8 +16,8 @@ def test_should_sorted_by_created_at_desc():
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
 
-    utils.create_question_get_id(jwt_token, "first question")
-    utils.create_question_get_id(jwt_token, "second question")
+    utils.create_question_get_id(jwt_token, "dummy title", "first question")
+    utils.create_question_get_id(jwt_token, "dummy title", "second question")
 
     response = utils.get_question_list()
 

@@ -11,7 +11,9 @@ def test_should_sorted_by_thumbs_rate_desc():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "what is software engineer?")
+    question_id = utils.create_question_get_id(
+        jwt_token, "dummy title", "what is software engineer?"
+    )
     answer_id = utils.create_answer_get_id(jwt_token, question_id, "idk")
     comment_id = utils.create_comment_get_id(jwt_token, answer_id, "hmm")
 

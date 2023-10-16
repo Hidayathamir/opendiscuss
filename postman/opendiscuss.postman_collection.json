@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "2762a88d-3819-4685-b681-753978469f82",
+		"_postman_id": "8a1ae7dd-3506-4b15-9de4-ef6067cd026e",
 		"name": "opendiscuss",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "15330934",
-		"_collection_link": "https://hidayathamir.postman.co/workspace/Eraspace~706ef357-816b-4ded-90f3-10d465d04d96/collection/15330934-2762a88d-3819-4685-b681-753978469f82?action=share&source=collection_link&creator=15330934"
+		"_collection_link": "https://hidayathamir.postman.co/workspace/Eraspace~706ef357-816b-4ded-90f3-10d465d04d96/collection/15330934-8a1ae7dd-3506-4b15-9de4-ef6067cd026e?action=share&source=collection_link&creator=15330934"
 	},
 	"item": [
 		{
@@ -29,7 +29,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"question\": \"what is promise?\"\n}",
+									"raw": "{\n    \"title\": \"ask about promise\",\n    \"question\": \"what is promise?\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -172,7 +172,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"question\": \"update question\"\n}\n",
+									"raw": "{\n    \"title\": \"update title\",\n    \"question\": \"update question\"\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"

@@ -6,7 +6,9 @@ def test_success_create_subcomment_of_comment():
     password = utils.generate_string()
     user_id = utils.register_user_get_id(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "what is software engineer?")
+    question_id = utils.create_question_get_id(
+        jwt_token, "dummy title", "what is software engineer?"
+    )
     answer_id = utils.create_answer_get_id(
         jwt_token, question_id, "software engineer is programmer"
     )
@@ -48,7 +50,9 @@ def test_error_create_subcomment_of_comment__comment_not_found():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "what is software engineer?")
+    question_id = utils.create_question_get_id(
+        jwt_token, "dummy title", "what is software engineer?"
+    )
     answer_id = utils.create_answer_get_id(
         jwt_token, question_id, "software engineer is programmer"
     )
@@ -67,7 +71,9 @@ def test_success_create_subcomment_of_subcomment():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "what is software engineer?")
+    question_id = utils.create_question_get_id(
+        jwt_token, "dummy title", "what is software engineer?"
+    )
     answer_id = utils.create_answer_get_id(
         jwt_token, question_id, "software engineer is programmer"
     )
@@ -93,7 +99,9 @@ def test_error_create_subcomment_of_subcomment__subcomment_not_found():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
-    question_id = utils.create_question_get_id(jwt_token, "what is software engineer?")
+    question_id = utils.create_question_get_id(
+        jwt_token, "dummy title", "what is software engineer?"
+    )
     answer_id = utils.create_answer_get_id(
         jwt_token, question_id, "software engineer is programmer"
     )

@@ -6,8 +6,9 @@ def test_vote_thumbs_up():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
+    title = "dummy title"
     question = "who are you?"
-    question_id = utils.create_question_get_id(jwt_token, question)
+    question_id = utils.create_question_get_id(jwt_token, title, question)
 
     response = utils.vote_question(jwt_token, question_id, utils.VoteOption.ThumbsUp)
 
@@ -20,6 +21,7 @@ def test_vote_thumbs_up():
     assert response["data"] != None
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
+    assert response["data"]["question"]["title"] == title
     assert response["data"]["question"]["question"] == question
     assert response["data"]["question"]["thumbs_rate"] == 1
     assert response["data"]["question"]["thumbs_up"] == 1
@@ -32,8 +34,9 @@ def test_vote_thumbs_down():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
+    title = "dummy title"
     question = "who are you?"
-    question_id = utils.create_question_get_id(jwt_token, question)
+    question_id = utils.create_question_get_id(jwt_token, title, question)
 
     response = utils.vote_question(jwt_token, question_id, utils.VoteOption.ThumbsDown)
 
@@ -46,6 +49,7 @@ def test_vote_thumbs_down():
     assert response["data"] != None
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
+    assert response["data"]["question"]["title"] == title
     assert response["data"]["question"]["question"] == question
     assert response["data"]["question"]["thumbs_rate"] == -1
     assert response["data"]["question"]["thumbs_up"] == 0
@@ -58,8 +62,9 @@ def test_vote_thumbs_up_then_thumbs_up():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
+    title = "dummy title"
     question = "who are you?"
-    question_id = utils.create_question_get_id(jwt_token, question)
+    question_id = utils.create_question_get_id(jwt_token, title, question)
 
     response = utils.vote_question(jwt_token, question_id, utils.VoteOption.ThumbsUp)
 
@@ -72,6 +77,7 @@ def test_vote_thumbs_up_then_thumbs_up():
     assert response["data"] != None
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
+    assert response["data"]["question"]["title"] == title
     assert response["data"]["question"]["question"] == question
     assert response["data"]["question"]["thumbs_rate"] == 1
     assert response["data"]["question"]["thumbs_up"] == 1
@@ -89,6 +95,7 @@ def test_vote_thumbs_up_then_thumbs_up():
     assert response["data"] != None
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
+    assert response["data"]["question"]["title"] == title
     assert response["data"]["question"]["question"] == question
     assert response["data"]["question"]["thumbs_rate"] == 0
     assert response["data"]["question"]["thumbs_up"] == 0
@@ -101,8 +108,9 @@ def test_vote_thumbs_up_then_thumbs_down():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
+    title = "dummy title"
     question = "who are you?"
-    question_id = utils.create_question_get_id(jwt_token, question)
+    question_id = utils.create_question_get_id(jwt_token, title, question)
 
     response = utils.vote_question(jwt_token, question_id, utils.VoteOption.ThumbsUp)
 
@@ -115,6 +123,7 @@ def test_vote_thumbs_up_then_thumbs_down():
     assert response["data"] != None
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
+    assert response["data"]["question"]["title"] == title
     assert response["data"]["question"]["question"] == question
     assert response["data"]["question"]["thumbs_rate"] == 1
     assert response["data"]["question"]["thumbs_up"] == 1
@@ -132,6 +141,7 @@ def test_vote_thumbs_up_then_thumbs_down():
     assert response["data"] != None
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
+    assert response["data"]["question"]["title"] == title
     assert response["data"]["question"]["question"] == question
     assert response["data"]["question"]["thumbs_rate"] == -1
     assert response["data"]["question"]["thumbs_up"] == 0
@@ -144,8 +154,9 @@ def test_vote_thumbs_down_then_thumbs_up():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
+    title = "dummy title"
     question = "who are you?"
-    question_id = utils.create_question_get_id(jwt_token, question)
+    question_id = utils.create_question_get_id(jwt_token, title, question)
 
     response = utils.vote_question(jwt_token, question_id, utils.VoteOption.ThumbsDown)
 
@@ -158,6 +169,7 @@ def test_vote_thumbs_down_then_thumbs_up():
     assert response["data"] != None
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
+    assert response["data"]["question"]["title"] == title
     assert response["data"]["question"]["question"] == question
     assert response["data"]["question"]["thumbs_rate"] == -1
     assert response["data"]["question"]["thumbs_up"] == 0
@@ -175,6 +187,7 @@ def test_vote_thumbs_down_then_thumbs_up():
     assert response["data"] != None
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
+    assert response["data"]["question"]["title"] == title
     assert response["data"]["question"]["question"] == question
     assert response["data"]["question"]["thumbs_rate"] == 1
     assert response["data"]["question"]["thumbs_up"] == 1
@@ -187,8 +200,9 @@ def test_vote_thumbs_down_then_thumbs_down():
     password = utils.generate_string()
     utils.register_user(username, password)
     jwt_token = utils.login_user_get_token(username, password)
+    title = "dummy title"
     question = "who are you?"
-    question_id = utils.create_question_get_id(jwt_token, question)
+    question_id = utils.create_question_get_id(jwt_token, title, question)
 
     response = utils.vote_question(jwt_token, question_id, utils.VoteOption.ThumbsDown)
 
@@ -201,6 +215,7 @@ def test_vote_thumbs_down_then_thumbs_down():
     assert response["data"] != None
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
+    assert response["data"]["question"]["title"] == title
     assert response["data"]["question"]["question"] == question
     assert response["data"]["question"]["thumbs_rate"] == -1
     assert response["data"]["question"]["thumbs_up"] == 0
@@ -218,6 +233,7 @@ def test_vote_thumbs_down_then_thumbs_down():
     assert response["data"] != None
     assert response["data"]["question"]["id"] == question_id
     assert response["data"]["question"]["author"] == username
+    assert response["data"]["question"]["title"] == title
     assert response["data"]["question"]["question"] == question
     assert response["data"]["question"]["thumbs_rate"] == 0
     assert response["data"]["question"]["thumbs_up"] == 0
@@ -230,8 +246,11 @@ def test_usera_thumbs_up_userb_thumbs_up():
     usera_password = utils.generate_string()
     utils.register_user(usera_username, usera_password)
     usera_jwt_token = utils.login_user_get_token(usera_username, usera_password)
+    usera_title = "dummy title"
     usera_question = "who are you?"
-    usera_question_id = utils.create_question_get_id(usera_jwt_token, usera_question)
+    usera_question_id = utils.create_question_get_id(
+        usera_jwt_token, usera_title, usera_question
+    )
 
     usera_response = utils.vote_question(
         usera_jwt_token, usera_question_id, utils.VoteOption.ThumbsUp
@@ -246,6 +265,7 @@ def test_usera_thumbs_up_userb_thumbs_up():
     assert usera_response["data"] != None
     assert usera_response["data"]["question"]["id"] == usera_question_id
     assert usera_response["data"]["question"]["author"] == usera_username
+    assert usera_response["data"]["question"]["title"] == usera_title
     assert usera_response["data"]["question"]["question"] == usera_question
     assert usera_response["data"]["question"]["thumbs_rate"] == 1
     assert usera_response["data"]["question"]["thumbs_up"] == 1
@@ -270,6 +290,7 @@ def test_usera_thumbs_up_userb_thumbs_up():
     assert response["data"] != None
     assert response["data"]["question"]["id"] == usera_question_id
     assert response["data"]["question"]["author"] == usera_username
+    assert response["data"]["question"]["title"] == usera_title
     assert response["data"]["question"]["question"] == usera_question
     assert response["data"]["question"]["thumbs_rate"] == 2
     assert response["data"]["question"]["thumbs_up"] == 2
@@ -283,7 +304,10 @@ def test_usera_thumbs_up_userb_thumbs_down():
     utils.register_user(usera_username, usera_password)
     usera_jwt_token = utils.login_user_get_token(usera_username, usera_password)
     usera_question = "who are you?"
-    usera_question_id = utils.create_question_get_id(usera_jwt_token, usera_question)
+    usera_title = "dummy title"
+    usera_question_id = utils.create_question_get_id(
+        usera_jwt_token, usera_title, usera_question
+    )
 
     usera_response = utils.vote_question(
         usera_jwt_token, usera_question_id, utils.VoteOption.ThumbsUp
@@ -298,6 +322,7 @@ def test_usera_thumbs_up_userb_thumbs_down():
     assert usera_response["data"] != None
     assert usera_response["data"]["question"]["id"] == usera_question_id
     assert usera_response["data"]["question"]["author"] == usera_username
+    assert usera_response["data"]["question"]["title"] == usera_title
     assert usera_response["data"]["question"]["question"] == usera_question
     assert usera_response["data"]["question"]["thumbs_rate"] == 1
     assert usera_response["data"]["question"]["thumbs_up"] == 1
@@ -322,6 +347,7 @@ def test_usera_thumbs_up_userb_thumbs_down():
     assert response["data"] != None
     assert response["data"]["question"]["id"] == usera_question_id
     assert response["data"]["question"]["author"] == usera_username
+    assert response["data"]["question"]["title"] == usera_title
     assert response["data"]["question"]["question"] == usera_question
     assert response["data"]["question"]["thumbs_rate"] == 0
     assert response["data"]["question"]["thumbs_up"] == 1
@@ -335,7 +361,10 @@ def test_usera_thumbs_down_userb_thumbs_down():
     utils.register_user(usera_username, usera_password)
     usera_jwt_token = utils.login_user_get_token(usera_username, usera_password)
     usera_question = "who are you?"
-    usera_question_id = utils.create_question_get_id(usera_jwt_token, usera_question)
+    usera_title = "dummy title"
+    usera_question_id = utils.create_question_get_id(
+        usera_jwt_token, usera_title, usera_question
+    )
 
     usera_response = utils.vote_question(
         usera_jwt_token, usera_question_id, utils.VoteOption.ThumbsDown
@@ -350,6 +379,7 @@ def test_usera_thumbs_down_userb_thumbs_down():
     assert usera_response["data"] != None
     assert usera_response["data"]["question"]["id"] == usera_question_id
     assert usera_response["data"]["question"]["author"] == usera_username
+    assert usera_response["data"]["question"]["title"] == usera_title
     assert usera_response["data"]["question"]["question"] == usera_question
     assert usera_response["data"]["question"]["thumbs_rate"] == -1
     assert usera_response["data"]["question"]["thumbs_up"] == 0
@@ -374,6 +404,7 @@ def test_usera_thumbs_down_userb_thumbs_down():
     assert response["data"] != None
     assert response["data"]["question"]["id"] == usera_question_id
     assert response["data"]["question"]["author"] == usera_username
+    assert response["data"]["question"]["title"] == usera_title
     assert response["data"]["question"]["question"] == usera_question
     assert response["data"]["question"]["thumbs_rate"] == -2
     assert response["data"]["question"]["thumbs_up"] == 0

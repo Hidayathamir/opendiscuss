@@ -5,6 +5,7 @@ import "errors"
 type ReqUpdateQuestionByID struct {
 	UserID     int    `json:"-"`
 	QuestionID int    `json:"-"`
+	Title      string `json:"title"`
 	Question   string `json:"question"`
 }
 
@@ -14,6 +15,9 @@ func (r ReqUpdateQuestionByID) Validate() error {
 	}
 	if r.QuestionID == 0 {
 		return errors.New("question id can not be empty")
+	}
+	if r.Title == "" {
+		return errors.New("title can not be empty")
 	}
 	if r.Question == "" {
 		return errors.New("question can not be empty")
