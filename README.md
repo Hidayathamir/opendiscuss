@@ -24,6 +24,8 @@ sudo docker compose up
 
 To view MySQL credentials, you can refer to the [docker-compose.yml](docker-compose.yml) file.
 
+You can check this youtube video for [Quick Start Opendiscuss](https://youtu.be/S9iGM_GFVkc?si=zawTc9gu3J-Yw99J).
+
 ## API Documentation
 
 For API documentation, you can import the file [postman/opendiscuss.postman_collection.json](postman/opendiscuss.postman_collection.json) into your Postman.
