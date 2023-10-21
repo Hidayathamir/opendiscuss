@@ -3,18 +3,29 @@ version: "3"
 services:
   opendiscuss-mysql:
     image: mysql:8.0
-    network_mode: "host"
+    networks:
+      - opendiscuss-network
+    ports:
+      - "${DB_PORT_HOST}:${DB_PORT}"
+    container_name: ${DB_HOST}
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: opendiscuss
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ./migrations/init-table.sql:/docker-entrypoint-initdb.d/1000.sql
       - ./migrations/init-data.sql:/docker-entrypoint-initdb.d/1001.sql
 
   opendiscuss-go:
     build: .
-    network_mode: "host"
+    networks:
+      - opendiscuss-network
+    ports:
+      - "${APP_PORT_HOST}:8080"
     depends_on:
       - opendiscuss-mysql
+
+networks:
+  opendiscuss-network:
+    driver: bridge

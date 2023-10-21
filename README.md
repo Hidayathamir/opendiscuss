@@ -14,17 +14,38 @@ You can view the ERD on [dbdiagram](https://dbdiagram.io/d/opendiscuss-erd-64e85
 
 ## Quick Start
 
+You can check this youtube video for [Quick Start Opendiscuss](https://youtu.be/S9iGM_GFVkc?si=zawTc9gu3J-Yw99J).
+
 1. Rename `.env-example` to `.env`.
 
 2. Run the MySQL database and the Go app using Docker Compose:
 
 ```shell
-sudo docker compose up
+sudo docker compose up --build
 ```
 
-To view MySQL credentials, you can refer to the [docker-compose.yml](docker-compose.yml) file.
+MySQL credentials is:
 
-You can check this youtube video for [Quick Start Opendiscuss](https://youtu.be/S9iGM_GFVkc?si=zawTc9gu3J-Yw99J).
+```
+DB_USER="user"
+DB_PASSWORD="password"
+DB_HOST="localhost"
+DB_PORT="9306"
+DB_NAME="opendiscuss"
+```
+
+Test hit API login:
+
+```shell
+curl --location 'http://localhost:9080/api/v1/login' \
+--header 'Content-Type: application/json' \
+--data '{
+    "username": "abdan",
+    "password": "abdan"
+}'
+```
+
+Check [README-user-story.md](README-user-story.md) for other API.
 
 ## API Documentation
 

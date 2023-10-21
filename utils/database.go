@@ -1,6 +1,8 @@
 package utils
 
 import (
+	"fmt"
+
 	"github.com/Hidayathamir/opendiscuss/environtment"
 	"github.com/pkg/errors"
 	"gorm.io/driver/mysql"
@@ -10,7 +12,12 @@ import (
 
 func GetDBConnection() (*gorm.DB, error) {
 	gormConfig := gorm.Config{Logger: logger.Default.LogMode(logger.Info)}
-	db, err := gorm.Open(mysql.Open(environtment.DB_CONNECTION), &gormConfig)
+	dsn := fmt.Sprintf(
+		"%s:%s@tcp(%s:%s)/%s?parseTime=true",
+		environtment.DB_USER, environtment.DB_PASSWORD, environtment.DB_HOST,
+		environtment.DB_PORT, environtment.DB_NAME,
+	)
+	db, err := gorm.Open(mysql.Open(dsn), &gormConfig)
 	if err != nil {
 		return nil, errors.Wrap(err, "error open db connection")
 	}
