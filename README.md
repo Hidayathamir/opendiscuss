@@ -14,7 +14,7 @@ You can view the ERD on [dbdiagram](https://dbdiagram.io/d/opendiscuss-erd-64e85
 
 ## Quick Start
 
-You can check this youtube video for [Quick Start Opendiscuss](https://youtu.be/S9iGM_GFVkc?si=zawTc9gu3J-Yw99J).
+You can check this youtube video for [Quick Start Opendiscuss](https://youtu.be/sK3WQV0KyAw).
 
 1. Rename `.env-example` to `.env`.
 
