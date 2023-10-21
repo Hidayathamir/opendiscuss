@@ -37,12 +37,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/v1/questions",
+									"raw": "http://localhost:9080/api/v1/questions",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -58,12 +58,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/questions",
+									"raw": "http://localhost:9080/api/v1/questions",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -79,12 +79,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/questions/1",
+									"raw": "http://localhost:9080/api/v1/questions/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -110,12 +110,12 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/questions/1/thumbsup",
+									"raw": "http://localhost:9080/api/v1/questions/1/thumbsup",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -142,12 +142,12 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/questions/1/thumbsdown",
+									"raw": "http://localhost:9080/api/v1/questions/1/thumbsdown",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -180,12 +180,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/v1/questions/1",
+									"raw": "http://localhost:9080/api/v1/questions/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -208,12 +208,12 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/questions/1",
+									"raw": "http://localhost:9080/api/v1/questions/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -252,12 +252,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/v1/register",
+									"raw": "http://localhost:9080/api/v1/register",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -285,12 +285,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/v1/login",
+									"raw": "http://localhost:9080/api/v1/login",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -326,12 +326,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/v1/questions/1/answers",
+									"raw": "http://localhost:9080/api/v1/questions/1/answers",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -349,12 +349,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/answers/1",
+									"raw": "http://localhost:9080/api/v1/answers/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -371,12 +371,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/questions/1/answers",
+									"raw": "http://localhost:9080/api/v1/questions/1/answers",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -403,12 +403,12 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/answers/1/thumbsup",
+									"raw": "http://localhost:9080/api/v1/answers/1/thumbsup",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -435,12 +435,12 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/answers/1/thumbsdown",
+									"raw": "http://localhost:9080/api/v1/answers/1/thumbsdown",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -473,12 +473,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/v1/answers/1",
+									"raw": "http://localhost:9080/api/v1/answers/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -501,12 +501,12 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/answers/1",
+									"raw": "http://localhost:9080/api/v1/answers/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -543,12 +543,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/v1/answers/1/comments",
+									"raw": "http://localhost:9080/api/v1/answers/1/comments",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -581,12 +581,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/v1/answers/151/comments",
+									"raw": "http://localhost:9080/api/v1/answers/151/comments",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -604,12 +604,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/comments/2",
+									"raw": "http://localhost:9080/api/v1/comments/2",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -626,12 +626,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/answers/1/comments",
+									"raw": "http://localhost:9080/api/v1/answers/1/comments",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -649,12 +649,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/comments/87/subcomments",
+									"raw": "http://localhost:9080/api/v1/comments/87/subcomments",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -681,12 +681,12 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/comments/1/thumbsup",
+									"raw": "http://localhost:9080/api/v1/comments/1/thumbsup",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -713,12 +713,12 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/comments/1/thumbsdown",
+									"raw": "http://localhost:9080/api/v1/comments/1/thumbsdown",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -751,12 +751,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/v1/comments/1",
+									"raw": "http://localhost:9080/api/v1/comments/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
@@ -779,12 +779,12 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/comments/1/",
+									"raw": "http://localhost:9080/api/v1/comments/1/",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "9080",
 									"path": [
 										"api",
 										"v1",
